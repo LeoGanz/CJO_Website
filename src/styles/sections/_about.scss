@@ -1,0 +1,37 @@
+// =========================================
+// About Section
+// =========================================
+
+@use '../base/variables' as *;
+
+.about {
+    padding: 8rem 0;
+    background: linear-gradient(180deg, $color-bg-dark 0%, $color-bg-medium 100%);
+
+    &__content {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    &__text {
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: $color-text-muted;
+            margin-bottom: 1.5rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: 5rem 0;
+
+        &__text p {
+            font-size: 1rem;
+        }
+    }
+}
+

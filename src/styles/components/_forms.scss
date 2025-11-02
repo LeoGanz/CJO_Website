@@ -1,0 +1,74 @@
+// =========================================
+// Forms
+// =========================================
+
+@use '../base/variables' as *;
+
+.form-group {
+    margin-bottom: 1.5rem;
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: $color-text-light;
+        font-weight: 500;
+        font-size: 0.95rem;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 0.875rem 1rem;
+        background: rgba($color-bg-dark, 0.5);
+        border: 1px solid rgba($color-brass, 0.2);
+        border-radius: 4px;
+        color: $color-text-light;
+        font-family: $font-body;
+        font-size: 1rem;
+        transition: all 0.3s $transition-smooth;
+
+        &:focus {
+            outline: none;
+            border-color: $color-brass;
+            background: rgba($color-bg-dark, 0.7);
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: rgba($color-bg-dark, 0.2);
+        }
+
+        &::placeholder {
+            color: rgba($color-text-muted, 0.5);
+        }
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+}
+
+.form-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 4px;
+    display: none;
+    font-size: 0.95rem;
+
+    &.success {
+        display: block;
+        background: rgba(#10b981, 0.1);
+        border: 1px solid #10b981;
+        color: #10b981;
+    }
+
+    &.error {
+        display: block;
+        background: rgba(#ef4444, 0.1);
+        border: 1px solid #ef4444;
+        color: #ef4444;
+    }
+}
+

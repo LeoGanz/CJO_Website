@@ -1,0 +1,246 @@
+// =========================================
+// Navigation
+// =========================================
+
+@use '../base/variables' as *;
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba($color-bg-dark, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba($color-brass, 0.1);
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: all 0.5s $transition-smooth;
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    &__container {
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        position: relative;
+
+        // Add pseudo-element to balance logo on the right
+        &::after {
+            content: '';
+            width: 60px; // Same as logo width
+            height: 1px;
+        }
+
+        @media (max-width: 768px) {
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    &__logo {
+        width: 60px;
+        
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    &__menu {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+
+        a {
+            color: $color-text-muted;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: $color-brass;
+                transition: width 0.3s $transition-smooth;
+            }
+
+            &:hover {
+                color: $color-brass;
+
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+
+    &__burger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        z-index: 1001;
+
+        span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: $color-text-muted;
+            transition: all 0.3s $transition-smooth;
+            border-radius: 2px;
+        }
+
+        &:hover span {
+            background: $color-brass;
+        }
+
+        @media (max-width: 768px) {
+            display: none; // TODO make 'flex' when links are fixed
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba($color-bg-dark, 0.85);
+            border: 1px solid rgba($color-brass, 0.3);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s $transition-smooth;
+            
+            &:hover {
+                background: rgba($color-bg-dark, 0.95);
+                border-color: $color-brass;
+                transform: scale(1.05);
+            }
+            
+            span {
+                background: $color-text-light;
+            }
+        }
+
+        &.active {
+            span:nth-child(1) {
+                transform: rotate(45deg) translate(5.5px, 5.5px);
+            }
+
+            span:nth-child(2) {
+                opacity: 0;
+                transform: scaleX(0);
+            }
+
+            span:nth-child(3) {
+                transform: rotate(-45deg) translate(5.5px, -5.5px);
+            }
+            
+            @media (max-width: 768px) {
+                transform: scale(1);
+            }
+        }
+    }
+
+    &__mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: rgba($color-bg-dark, 0.98);
+        backdrop-filter: blur(20px);
+        border-left: 1px solid rgba($color-brass, 0.2);
+        transition: right 0.3s $transition-smooth;
+        z-index: 999;
+        overflow-y: auto;
+        padding-top: 80px;
+
+        &.active {
+            right: 0;
+            
+            // Add overlay when menu is active
+            &::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba($color-bg-dark, 0.5);
+                z-index: -1;
+            }
+        }
+    }
+
+    &__mobile-list {
+        list-style: none;
+        padding: 2rem;
+
+        li {
+            margin-bottom: 1.5rem;
+
+            a {
+                color: $color-text-muted;
+                font-weight: 500;
+                font-size: 1.1rem;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                display: block;
+                padding: 0.75rem 0;
+                border-bottom: 1px solid rgba($color-brass, 0.1);
+                transition: all 0.3s $transition-smooth;
+
+                &:hover {
+                    color: $color-brass;
+                    padding-left: 1rem;
+                    border-bottom-color: $color-brass;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        // Hide entire nav bar on mobile, except burger button
+        background: transparent;
+        backdrop-filter: none;
+        border-bottom: none;
+        pointer-events: none;
+        
+        // Only show burger button
+        &__burger {
+            pointer-events: all;
+        }
+        
+        &__logo {
+            display: none;
+        }
+
+        &__container {
+            padding: 0;
+            justify-content: flex-end;
+        }
+    }
+}
+

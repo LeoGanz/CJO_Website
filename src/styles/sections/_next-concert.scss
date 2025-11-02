@@ -1,0 +1,163 @@
+// =========================================
+// Next Concert Section
+// =========================================
+
+@use '../base/variables' as *;
+
+.next-concert {
+    padding: 8rem 0;
+    background: $color-bg-medium;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, $color-brass, transparent);
+        opacity: 0;
+        transform: scaleX(0);
+        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &.animate-in::before {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+.concert {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+
+    &__poster {
+        position: sticky;
+        top: 120px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+
+    &__details {
+        padding: 2rem 0;
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: $color-text-light;
+        margin-bottom: 0.5rem;
+    }
+
+    &__subtitle {
+        font-size: 1.5rem;
+        color: $color-brass;
+        margin-bottom: 2rem;
+        font-style: italic;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        padding: 2rem;
+        background: rgba($color-bg-light, 0.5);
+        border-left: 3px solid $color-burgundy;
+        border-radius: 4px;
+    }
+
+    &__info-item {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+
+        svg {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            color: $color-brass;
+            margin-top: 0.2rem;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        strong {
+            color: $color-text-light;
+            font-size: 1.1rem;
+        }
+
+        span {
+            color: $color-text-muted;
+            font-size: 0.95rem;
+        }
+    }
+
+    &__description {
+        margin-bottom: 2rem;
+
+        p {
+            color: $color-text-muted;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__reservation {
+        color: $color-brass !important;
+        font-size: 1.1rem !important;
+    }
+
+    &__actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+
+        &__poster {
+            position: relative;
+            top: 0;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        &__title {
+            font-size: 2rem;
+        }
+
+        &__subtitle {
+            font-size: 1.25rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        &__title {
+            font-size: 1.75rem;
+        }
+
+        &__info {
+            padding: 1.5rem;
+        }
+    }
+}
+

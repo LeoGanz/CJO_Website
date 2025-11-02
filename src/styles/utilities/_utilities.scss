@@ -1,0 +1,33 @@
+// =========================================
+// Utility Classes
+// =========================================
+
+@use '../base/variables' as *;
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    @media (max-width: 768px) {
+        padding: 0 1.5rem;
+    }
+}
+
+.section-title {
+    font-family: $font-heading;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    color: $color-brass;
+    margin-bottom: 3rem;
+    text-align: center;
+    letter-spacing: -0.02em;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: $color-brass;
+    margin-bottom: 1.5rem;
+}
+

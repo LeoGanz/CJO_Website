@@ -1,0 +1,45 @@
+// =========================================
+// CSS Reset & Base Styles
+// =========================================
+
+@use 'variables' as *;
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: auto; // Lenis will handle smooth scrolling
+    overflow-x: hidden;
+}
+
+body {
+    font-family: $font-body;
+    line-height: 1.6;
+    color: $color-text-light;
+    background-color: $color-bg-dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s $transition-smooth;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+

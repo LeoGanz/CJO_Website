@@ -19,12 +19,6 @@ CJO_Website/
 │       ├── layout/            # Layout-Strukturen (Navigation, Footer)
 │       └── sections/          # Seiten-Sektionen (Hero, About, etc.)
 │
-├── assets/                     # Statische Assets (automatisch optimiert)
-│   ├── *.JPG                  # Konzertfotos (JPEG mit mozjpeg, 85% Qualität)
-│   ├── *.png                  # Grafiken & QR-Codes (PNG, Compression Level 9)
-│   ├── logo.svg               # Logo (SVG, nicht optimiert)
-│   └── starlet_singers/       # Starlet Singers Bilder
-│
 ├── dist/                       # Build-Output (generiert)
 ├── node_modules/              # Dependencies
 │
@@ -84,10 +78,7 @@ Siehe `src/styles/README.md` für Details.
 
 ### Assets
 
-- **Bilder:** Konzert- und Bandfotos im JPG-Format
-- **Grafiken:** QR-Codes und Plakate als PNG
-- **Logo:** SVG-Datei für optimale Skalierung
-- **Unterordner:** Starlet Singers Bilder in separatem Ordner
+- Werden über Cloudinary geladen
 
 ## Hinzufügen neuer Seiten
 
@@ -144,30 +135,6 @@ dist/
 └── assets/                 # Optimierte Assets
     ├── *.css               # Kompilierte Styles
     ├── *.js                # Gebündeltes JavaScript
-    └── Bilder & Grafiken   # Optimierte Assets
-```
-
-## Bildoptimierung
-
-Das Projekt nutzt `vite-plugin-image-optimizer` für automatische Bildkompression:
-
-- **JPEG/JPG**: mozjpeg mit 85% Qualität (~80-85% Größenersparnis)
-- **PNG**: Sharp mit 85% Qualität, Compression Level 9 (~70-85% Größenersparnis)
-- **SVG**: Wird nicht optimiert (bereits vektorbasiert)
-
-### Ergebnisse
-- **Gesamtersparnis**: ~35 MB pro Build (84% durchschnittlich)
-- **Buildzeit**: ~4 Sekunden mit Optimierung
-- **Qualität**: Hochwertige Darstellung bei minimierter Dateigröße
-
-### Konfiguration
-Die Optimierung erfolgt automatisch beim Build-Prozess. Einstellungen in `vite.config.ts`:
-```typescript
-ViteImageOptimizer({
-  jpeg: { quality: 85, mozjpeg: true },
-  jpg: { quality: 85, mozjpeg: true },
-  png: { quality: 85, compressionLevel: 9 },
-})
 ```
 
 ## Vorteile dieser Struktur
@@ -182,8 +149,6 @@ ViteImageOptimizer({
 ## Best Practices
 
 1. **Alle HTML-Seiten im Root** - Konsistenz und Vite Convention
-2. **Assets in assets/** - Zentrale Verwaltung, automatische Optimierung
 3. **Modulare Styles** - Einfacher zu warten
 4. **Multi-Page-Config** - Optimierte Builds pro Seite
-5. **Bilder als JPG/PNG** - Automatische Kompression beim Build
 

@@ -95,11 +95,6 @@ Für das Kontaktformular können Sie einen Backend-Service wie Formspree oder Ne
 CJO_Website/
 ├── pages/                    # Zusätzliche HTML-Seiten
 │   └── impressum.html       # Impressum (Multi-Page)
-├── assets/                   # Bilder, Plakate, Logo (automatisch optimiert)
-│   ├── logo.svg
-│   ├── *.JPG                # Konzertfotos
-│   ├── *.png                # Grafiken & QR-Codes
-│   └── starlet_singers/     # Unterordner für Assets
 ├── src/
 │   ├── main.ts              # TypeScript Hauptdatei
 │   └── styles/              # Modulare SCSS-Struktur

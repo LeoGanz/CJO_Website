@@ -143,36 +143,6 @@ In `index.html` vor `</head>` einfügen:
 </script>
 ```
 
-## Performance-Optimierung
-
-### Bilder optimieren
-
-Vor dem Deployment Bilder komprimieren:
-
-```bash
-# Mit ImageMagick (empfohlen für JPG)
-convert assets/DSCF9100.JPG -quality 85 -strip assets/DSCF9100.JPG
-
-# Oder mit TinyPNG (Online-Tool)
-# https://tinypng.com
-```
-
-### WebP-Format nutzen
-
-Moderne Browser unterstützen WebP:
-```bash
-# Konvertierung mit cwebp
-cwebp -q 85 assets/DSCF9100.JPG -o assets/DSCF9100.webp
-```
-
-In HTML beide Formate anbieten:
-```html
-<picture>
-  <source srcset="assets/DSCF9100.webp" type="image/webp">
-  <img src="assets/DSCF9100.JPG" alt="Konzert">
-</picture>
-```
-
 ## Troubleshooting
 
 ### Build schlägt fehl

@@ -21,24 +21,5 @@ export default defineConfig({
       },
     },
   },
-  plugins: [
-    ViteImageOptimizer({
-      // Only process specific image formats
-      test: /\.(jpe?g|png)$/i,
-      // Sharp options for compression
-      jpeg: {
-        quality: 85,
-        mozjpeg: true,
-      },
-      jpg: {
-        quality: 85,
-        mozjpeg: true,
-      },
-      png: {
-        quality: 85,
-        compressionLevel: 9,
-      },
-    }),
-  ],
 });
 

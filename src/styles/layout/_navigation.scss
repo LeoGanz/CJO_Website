@@ -172,9 +172,11 @@
         z-index: 999;
         overflow-y: auto;
         padding-top: 80px;
+        pointer-events: none;
 
         &.active {
             right: 0;
+            pointer-events: auto;
 
             // Add overlay when menu is active
             &::before {
@@ -186,6 +188,7 @@
                 height: 100vh;
                 background: rgba($color-bg-dark, 0.5);
                 z-index: -1;
+                pointer-events: auto;
             }
         }
     }

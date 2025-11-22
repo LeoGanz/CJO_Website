@@ -1,7 +1,3 @@
-// =========================================
-// Navigation
-// =========================================
-
 @use '../base/variables' as *;
 
 .nav {
@@ -47,7 +43,7 @@
 
     &__logo {
         width: 60px;
-        
+
         img {
             width: 100%;
             height: auto;
@@ -131,13 +127,13 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(10px);
             transition: all 0.3s $transition-smooth;
-            
+
             &:hover {
                 background: rgba($color-bg-dark, 0.95);
                 border-color: $color-brass;
                 transform: scale(1.05);
             }
-            
+
             span {
                 background: $color-text-light;
             }
@@ -156,7 +152,7 @@
             span:nth-child(3) {
                 transform: rotate(-45deg) translate(5.5px, -5.5px);
             }
-            
+
             @media (max-width: 768px) {
                 transform: scale(1);
             }
@@ -179,7 +175,7 @@
 
         &.active {
             right: 0;
-            
+
             // Add overlay when menu is active
             &::before {
                 content: '';
@@ -227,12 +223,12 @@
         backdrop-filter: none;
         border-bottom: none;
         pointer-events: none;
-        
+
         // Only show burger button
         &__burger {
             pointer-events: all;
         }
-        
+
         &__logo {
             display: none;
         }
@@ -243,4 +239,3 @@
         }
     }
 }
-

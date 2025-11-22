@@ -1,10 +1,8 @@
-// =========================================
-// CSS Reset & Base Styles
-// =========================================
-
 @use 'variables' as *;
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -42,4 +40,3 @@ button {
     border: none;
     background: none;
 }
-

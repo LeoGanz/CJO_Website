@@ -1,6 +1,6 @@
 # Styles Structure
 
-Diese Dokumentation beschreibt die modulare SCSS-Struktur des Projekts mit moderner `@use`/`@forward`-Syntax.
+Diese Dokumentation beschreibt die modulare SCSS-Struktur des Projekts.
 
 ## Dateistruktur
 

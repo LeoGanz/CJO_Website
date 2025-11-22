@@ -10,13 +10,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/styles/main.scss">
-    <!-- Cloudinary Core Shrinkwrap for responsive images -->
     <script src="https://unpkg.com/cloudinary-core@latest/cloudinary-core-shrinkwrap.js"></script>
 </head>
 <body>
-    <!-- Hero Section -->
     <section id="hero" class="hero">
-        <!-- Responsive hero background image (injected by JavaScript) -->
         <img id="hero-background" class="hero__background cld-responsive" alt="" aria-hidden="true">
         <div class="hero__overlay"></div>
         <div class="hero__content">
@@ -33,14 +30,12 @@
         </div>
     </section>
 
-    <!-- Navigation -->
     <nav class="nav">
         <div class="nav__container">
             <a href="#" class="nav__logo">
                 <img src="" alt="CJO" id="nav-logo">
             </a>
             
-            <!-- Desktop Menu -->
             <ul class="nav__menu">
                 <li><a href="#about">Über Uns</a></li>
                 <li><a href="#next-concert">Konzert</a></li>
@@ -49,23 +44,20 @@
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
             
-            <!-- Mobile Menu Toggle (Burger) -->
             <button class="nav__burger" id="burger-menu" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             
-            <!-- Mobile Menu -->
             <div class="nav__mobile-menu" id="mobile-menu">
                 <ul class="nav__mobile-list">
-                    <!-- Menu items will be cloned from .nav__menu via JS -->
+                    <!-- Menu items cloned from .nav__menu -->
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
             <div class="about__content">
@@ -79,7 +71,6 @@
         </div>
     </section>
 
-    <!-- Next Concert Section -->
     <section id="next-concert" class="next-concert">
         <div class="container">
             <h2 class="section-title">Nächstes Konzert</h2>
@@ -116,24 +107,9 @@
                         
                         <div class="concert__info-item">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <!-- Euro-Zeichen -->
-                                <path
-                                  d="M16.5 8C15.5 6.7 13.95 6 12.2 6C9.3 6 7 8.6 7 12C7 15.4 9.3 18 12.2 18C13.95 18 15.5 17.3 16.5 16M8 10.5H13M8 13.5H13"
-                                  stroke="currentColor"
-                                  stroke-width="1.5"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                />
-                                <!-- Kreis -->
-                                <path
-                                  d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"
-                                  stroke="currentColor"
-                                  stroke-width="1.5"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                />
-                              </svg>
-                              
+                                <path d="M16.5 8C15.5 6.7 13.95 6 12.2 6C9.3 6 7 8.6 7 12C7 15.4 9.3 18 12.2 18C13.95 18 15.5 17.3 16.5 16M8 10.5H13M8 13.5H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                             <div>
                                 <strong>Eintritt: 20€</strong>
                                 <span>Ermäßigung auf Anfrage</span>
@@ -155,7 +131,6 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
     <section id="gallery" class="gallery">
         <div class="container">
             <h2 class="section-title">Impressionen vergangener Konzerte</h2>
@@ -165,7 +140,6 @@
         </div>
     </section>
 
-    <!-- Social Media Section -->
     <section id="social-media" class="social-media">
         <div class="container">
             <div class="social-media__content">
@@ -173,16 +147,13 @@
                 <p class="social-media__subtitle">Bleib auf dem Laufenden und erlebe unsere Konzerte hautnah</p>
                 
                 <div class="social-media__grid">
-                    <!-- Instagram Card -->
                     <div class="social-media__card">
-                        <!-- QR Code for Desktop -->
                         <div class="social-media__qr" id="instagram-qr">
                             <img src="" alt="Instagram QR Code" class="social-media__qr-image">
                             <p>Scanne den QR-Code mit deinem Smartphone</p>
                             <a href="https://www.instagram.com/cicojazzorchester" class="social-media__handle" target="_blank" rel="noopener noreferrer">@cicojazzorchester</a>
                         </div>
                         
-                        <!-- Direct Link for Mobile -->
                         <div class="social-media__mobile" id="instagram-mobile">
                             <a href="https://www.instagram.com/cicojazzorchester" class="social-media__handle-mobile" target="_blank" rel="noopener noreferrer">@cicojazzorchester</a>
                             <a href="instagram://user?username=cicojazzorchester" class="btn btn--instagram">
@@ -194,16 +165,13 @@
                         </div>
                     </div>
                     
-                    <!-- YouTube Card -->
                     <div class="social-media__card">
-                        <!-- QR Code for Desktop -->
                         <div class="social-media__qr" id="youtube-qr">
                             <img src="" alt="YouTube QR Code" class="social-media__qr-image">
                             <p>Scanne den QR-Code mit deinem Smartphone</p>
                             <a href="https://www.youtube.com/@cicojazzorchester" class="social-media__handle" target="_blank" rel="noopener noreferrer">@cicojazzorchester</a>
                         </div>
                         
-                        <!-- Direct Link for Mobile -->
                         <div class="social-media__mobile" id="youtube-mobile">
                             <a href="https://www.youtube.com/@cicojazzorchester" class="social-media__handle-mobile" target="_blank" rel="noopener noreferrer">@cicojazzorchester</a>
                             <a href="https://www.youtube.com/@cicojazzorchester" class="btn btn--youtube">
@@ -220,73 +188,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Kontakt</h2>
-            <div class="contact__content">
-                <div class="contact__info">
-                    <h3>Haben Sie Fragen oder möchten Sie uns buchen?</h3>
-                    <p>Wir freuen uns auf Ihre Nachricht und melden uns zeitnah bei Ihnen zurück.</p>
-                    
-                    <div class="contact__details">
-                        <div class="contact__detail">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17 20.5H7c-3 0-5-1.5-5-5v-7c0-3.5 2-5 5-5h10c3 0 5 1.5 5 5v7c0 3.5-2 5-5 5z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="m17 9-3.13 2.5c-1.03.82-2.72.82-3.75 0L7 9" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <a href="mailto:info@cicojazz.de">info@cicojazz.de</a>
-                        </div>
-                        
-                        <div class="contact__detail">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 13.43a3.12 3.12 0 100-6.24 3.12 3.12 0 000 6.24z" stroke="currentColor" stroke-width="1.5"/>
-                                <path d="M3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.193 5.193 0 01-7.21 0c-2.76-2.66-5.92-6.97-4.77-12.05z" stroke="currentColor" stroke-width="1.5"/>
-                            </svg>
-                            <span>München & Geretsried, Deutschland</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <form class="contact__form" id="contact-form">
-                    <div class="contact__form-notice">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M12 16h.01M12 12v.01M12 8v.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <p><strong>Das Kontaktformular wird in Kürze verfügbar sein.</strong></p>
-                        <p>Bitte senden Sie uns bis dahin eine E-Mail an <a href="mailto:info@cicojazz.de">info@cicojazz.de</a>. Wir entschuldigen uns für die Umstände und danken für Ihr Verständnis.</p>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" disabled>
-    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">E-Mail</label>
-                        <input type="email" id="email" name="email" disabled>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">Betreff</label>
-                        <input type="text" id="subject" name="subject" disabled>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Nachricht</label>
-                        <textarea id="message" name="message" rows="5" disabled></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn--primary" disabled>Nachricht senden</button>
-                    
-                    <div class="form-message" id="form-message"></div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer__content">
@@ -338,7 +239,6 @@
         </div>
     </footer>
 
-    <!-- Lightbox for Gallery -->
     <div class="lightbox" id="lightbox">
         <button class="lightbox__close" id="lightbox-close">&times;</button>
         <button class="lightbox__nav lightbox__nav--prev" id="lightbox-prev">‹</button>

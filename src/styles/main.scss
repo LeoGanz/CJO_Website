@@ -1,22 +1,6 @@
-// =========================================
 // Main Stylesheet - Cico Jazz Orchester
-// =========================================
-//
-// This is the main entry point for all styles.
-// Individual style modules are organized in subdirectories
-// and loaded using the modern @use syntax.
-
-// 1. Base Styles (Variables, Resets, Animations)
 @use 'base';
-
-// 2. Utilities (Helper classes)
 @use 'utilities';
-
-// 3. Components (Reusable components)
 @use 'components';
-
-// 4. Layout (Structural elements)
 @use 'layout';
-
-// 5. Sections (Page sections)
 @use 'sections';

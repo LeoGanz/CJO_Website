@@ -54,7 +54,14 @@
         }
     }
 
+    &__formcentric {
+        border-radius: 8px;
+        border: 1px solid rgba($color-brass, 0.1);
+    }
+
     &__form {
+        display: none;
+
         background: rgba($color-bg-light, 0.5);
         padding: 2.5rem;
         border-radius: 8px;

@@ -3,6 +3,26 @@
 .gallery {
     padding: 8rem 0;
     background: linear-gradient(180deg, $color-bg-medium 0%, $color-bg-dark 100%);
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, $color-brass, transparent);
+        opacity: 0;
+        transform: scaleX(0);
+        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &.animate-in::before {
+        opacity: 1;
+        transform: scaleX(1);
+    }
 
     &__grid {
         display: grid;

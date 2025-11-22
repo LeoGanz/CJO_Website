@@ -112,7 +112,7 @@
         }
 
         @media (max-width: 768px) {
-            display: none; // TODO make 'flex' when links are fixed
+            display: flex;
             position: fixed;
             top: 1.5rem;
             right: 1.5rem;

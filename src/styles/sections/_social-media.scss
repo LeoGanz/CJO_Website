@@ -1,7 +1,3 @@
-// =========================================
-// Social Media Section
-// =========================================
-
 @use '../base/variables' as *;
 
 .social-media {
@@ -33,7 +29,7 @@
         @media (max-width: 811px) {
             grid-template-columns: 1fr;
             gap: 2rem;
-            
+
             // Hide YouTube handle when cards are stacked
             #youtube-mobile .social-media__handle-mobile {
                 display: none;
@@ -120,4 +116,3 @@
         padding: 5rem 0;
     }
 }
-

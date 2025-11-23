@@ -1,0 +1,275 @@
+@use '../base/variables' as *;
+
+.legal-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 2rem;
+    background: linear-gradient(180deg, $color-bg-dark 0%, $color-bg-medium 100%);
+}
+
+.legal-header {
+    margin-bottom: 4rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.legal-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: $color-brass;
+    text-decoration: none;
+    font-family: $font-body;
+    font-weight: 500;
+    transition: all 0.3s $transition-smooth;
+    padding: 0.75rem 1.5rem;
+    background: rgba($color-bg-light, 0.3);
+    border-radius: 50px;
+    border: 1px solid rgba($color-brass, 0.2);
+
+    &:hover {
+        gap: 1rem;
+        background: rgba($color-bg-light, 0.5);
+        border-color: rgba($color-brass, 0.4);
+        transform: translateX(-4px);
+    }
+
+    &::before {
+        content: '←';
+        font-size: 1.2rem;
+        position: relative;
+        top: -0.2em;
+    }
+}
+
+.legal-content {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba($color-bg-light, 0.3);
+    padding: 3rem;
+    border-radius: 12px;
+    border: 1px solid rgba($color-brass, 0.1);
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: $font-heading;
+        color: $color-text-light;
+        margin-bottom: 1.5rem;
+        margin-top: 3rem;
+        line-height: 1.3;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 2.5rem;
+        color: $color-brass;
+        font-weight: 700;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid rgba($color-brass, 0.2);
+    }
+
+    h2 {
+        font-size: 2rem;
+        color: $color-brass;
+        font-weight: 600;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+        color: $color-brass;
+        font-weight: 600;
+        margin-top: 2rem;
+    }
+
+    p {
+        font-family: $font-body;
+        font-size: 1.05rem;
+        line-height: 1.9;
+        margin-bottom: 1.5rem;
+        color: $color-text-muted;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    strong {
+        color: $color-text-light;
+        font-weight: 600;
+    }
+
+    a {
+        color: $color-brass;
+        text-decoration: none;
+        transition: all 0.3s $transition-smooth;
+        border-bottom: 1px solid rgba($color-brass, 0.3);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        word-break: break-all;
+
+        &:hover {
+            border-bottom-color: $color-brass;
+            color: $color-gold;
+        }
+    }
+
+    ul {
+        margin-bottom: 2rem;
+        padding-left: 2rem;
+
+        li {
+            color: $color-text-muted;
+            line-height: 1.9;
+            margin-bottom: 1rem;
+            position: relative;
+
+            &::marker {
+                color: $color-brass;
+            }
+        }
+
+        // Handle nested lists
+        ul {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        // Handle inline style override for list-style: none
+        &[style*="list-style: none"],
+        &[style*="list-style:none"] {
+            list-style: none;
+            padding-left: 0;
+
+            li {
+                padding-left: 0;
+
+                &::marker {
+                    content: none;
+                }
+            }
+        }
+    }
+
+    // Better spacing for sections
+    >h4+p {
+        margin-top: 0.5rem;
+    }
+
+    >h4+ul {
+        margin-top: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+        padding: 2rem 1.5rem;
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        h4 {
+            font-size: 1.125rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    }
+
+    // Very narrow screens (iPhone SE, small phones)
+    @media (max-width: 400px) {
+        padding: 1.5rem 1rem;
+
+        h1 {
+            font-size: 1.75rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            word-wrap: break-word;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            word-wrap: break-word;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            word-wrap: break-word;
+        }
+
+        p {
+            font-size: 0.95rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        a {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .legal-page {
+        padding: 2rem 1rem;
+    }
+
+    .legal-header {
+        margin-bottom: 2rem;
+    }
+
+    .legal-back {
+        font-size: 0.95rem;
+        padding: 0.6rem 1.25rem;
+    }
+}
+
+// Very narrow screens
+@media (max-width: 400px) {
+    .legal-page {
+        padding: 1.5rem 0.75rem;
+    }
+
+    .legal-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .legal-back {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+
+        &::before {
+            font-size: 1rem;
+        }
+    }
+}

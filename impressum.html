@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,101 +8,20 @@
     <link rel="icon" type="image/svg+xml" href="" id="favicon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="/src/styles/main.scss">
     <!-- Cloudinary Core Shrinkwrap for responsive images -->
     <script src="https://unpkg.com/cloudinary-core@latest/cloudinary-core-shrinkwrap.js"></script>
-    <style>
-        .impressum-page {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            padding: 2rem;
-        }
-
-        .impressum-header {
-            margin-bottom: 3rem;
-        }
-
-        .impressum-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--color-brass);
-            text-decoration: none;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            margin-bottom: 2rem;
-        }
-
-        .impressum-back:hover {
-            gap: 1rem;
-            opacity: 0.8;
-        }
-
-        .impressum-back::before {
-            content: '←';
-            font-size: 1.2rem;
-        }
-
-        .impressum-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .impressum-content h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            color: var(--color-text);
-        }
-
-        .impressum-content p {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            color: var(--color-text-muted);
-        }
-
-        .impressum-content strong {
-            color: var(--color-text);
-            font-weight: 600;
-        }
-
-        .impressum-content a {
-            color: var(--color-brass);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid transparent;
-        }
-
-        .impressum-content a:hover {
-            border-bottom-color: var(--color-brass);
-        }
-
-        @media (max-width: 768px) {
-            .impressum-page {
-                padding: 1.5rem;
-            }
-
-            .impressum-content h1 {
-                font-size: 2rem;
-            }
-
-            .impressum-content p {
-                font-size: 1rem;
-            }
-        }
-    </style>
 </head>
+
 <body>
-    <div class="impressum-page">
-        <div class="impressum-header">
-            <a href="/" class="impressum-back">Zurück zur Startseite</a>
+    <div class="legal-page">
+        <div class="legal-header">
+            <a href="/" class="legal-back">Zurück zur Startseite</a>
         </div>
-        <div class="impressum-content">
+        <div class="legal-content">
             <h1>Impressum</h1>
             <p>
                 Tobias Baumgartner<br>
@@ -116,4 +36,5 @@
     </div>
     <script type="module" src="/src/main.ts"></script>
 </body>
+
 </html>

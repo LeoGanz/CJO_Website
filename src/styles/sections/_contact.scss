@@ -59,57 +59,6 @@
         border: 1px solid rgba($color-brass, 0.1);
     }
 
-    &__form {
-        display: none;
-
-        background: rgba($color-bg-light, 0.5);
-        padding: 2.5rem;
-        border-radius: 8px;
-        border: 1px solid rgba($color-brass, 0.1);
-    }
-
-    &__form-notice {
-        background: rgba($color-burgundy, 0.1);
-        border: 1px solid rgba($color-burgundy, 0.3);
-        border-radius: 8px;
-        padding: 1.5rem;
-        margin-bottom: 2rem;
-        display: flex;
-        gap: 1rem;
-        align-items: flex-start;
-
-        svg {
-            flex-shrink: 0;
-            width: 24px;
-            height: 24px;
-            color: $color-burgundy;
-            margin-top: 0.1rem;
-        }
-
-        p {
-            color: $color-text-muted;
-            line-height: 1.6;
-            margin: 0;
-
-            &:not(:last-child) {
-                margin-bottom: 0.5rem;
-            }
-
-            strong {
-                color: $color-text-light;
-            }
-
-            a {
-                color: $color-brass;
-                text-decoration: underline;
-
-                &:hover {
-                    color: $color-gold;
-                }
-            }
-        }
-    }
-
     @media (max-width: 1024px) {
         &__content {
             grid-template-columns: 1fr;
@@ -119,9 +68,5 @@
 
     @media (max-width: 768px) {
         padding: 5rem 0;
-
-        &__form {
-            padding: 2rem;
-        }
     }
 }

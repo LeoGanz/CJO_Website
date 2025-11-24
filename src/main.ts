@@ -1,9 +1,9 @@
-import { initAnimations } from './scripts/ui/animations';
-import { initNavigation } from './scripts/ui/navigation';
-import { initGallery } from './scripts/ui/gallery';
-import { initSocialMedia } from './scripts/ui/social';
-import { initForms } from './scripts/ui/forms';
-import { initImages } from './scripts/ui/images';
+import { initAnimations } from './scripts/animations';
+import { initNavigation } from './scripts/navigation';
+import { initGallery } from './scripts/gallery';
+import { initSocialMedia } from './scripts/social';
+import { initForms } from './scripts/forms';
+import { initImages } from './scripts/images';
 
 // Initialize all modules
 initAnimations();

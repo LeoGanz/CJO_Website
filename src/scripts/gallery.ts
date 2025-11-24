@@ -1,5 +1,23 @@
-import { getResponsiveUrl, getGalleryFullUrl, cloudinaryInstance } from '../utils/cloudinary';
+import { Cloudinary, CloudinaryImage } from '@cloudinary/url-gen';
+import { scale } from '@cloudinary/url-gen/actions/resize';
+import { format, quality } from '@cloudinary/url-gen/actions/delivery';
+import { auto as autoFormat } from '@cloudinary/url-gen/qualifiers/format';
+import { auto as autoQuality } from '@cloudinary/url-gen/qualifiers/quality';
+import { HtmlImageLayer, responsive, lazyload } from '@cloudinary/html';
 import { lenis } from './animations';
+
+// Configuration
+const CLOUD_NAME = (import.meta as any).env?.VITE_CLOUDINARY_CLOUD_NAME || 'cjo';
+
+// Initialize Cloudinary for URL generation
+const cloudinary = new Cloudinary({
+    cloud: {
+        cloudName: CLOUD_NAME,
+    },
+    url: {
+        secure: true,
+    },
+});
 
 // Gallery image data
 interface GalleryImage {
@@ -29,8 +47,13 @@ export function initGallery() {
 
         // Generate gallery items with responsive images
         galleryImages.forEach((image, index) => {
-            const responsiveUrl = getResponsiveUrl(image.publicId);
-            const fullUrl = getGalleryFullUrl(image.publicId);
+            // Generate full-size URL for lightbox (1920px width)
+            const fullUrl = cloudinary
+                .image(image.publicId)
+                .resize(scale().width(1920))
+                .delivery(format(autoFormat()))
+                .delivery(quality(autoQuality()))
+                .toURL();
 
             const galleryItem = document.createElement('div');
             galleryItem.className = 'gallery__item';
@@ -38,11 +61,14 @@ export function initGallery() {
             galleryItem.setAttribute('data-full-url', fullUrl);
 
             const img = document.createElement('img');
-            // Use data-src for responsive images (Cloudinary will update src automatically)
-            img.setAttribute('data-src', responsiveUrl);
             img.alt = image.alt;
-            // Add cld-responsive class for Cloudinary responsive functionality
-            img.classList.add('cld-responsive');
+
+            // Use modern Cloudinary HTML SDK for responsive thumbnails
+            const thumbnailImage = new CloudinaryImage(image.publicId, { cloudName: CLOUD_NAME });
+            new HtmlImageLayer(img, thumbnailImage, [
+                lazyload(),
+                responsive({ steps: 200 })
+            ]);
 
             const overlay = document.createElement('div');
             overlay.className = 'gallery__overlay';
@@ -56,10 +82,6 @@ export function initGallery() {
             galleryItem.appendChild(overlay);
             galleryGrid.appendChild(galleryItem);
         });
-
-        // Initialize Cloudinary responsive functionality after gallery items are created
-        // This will automatically detect viewport width and DPR, then update image URLs
-        cloudinaryInstance.responsive();
 
         initLightbox();
     }
@@ -84,7 +106,12 @@ function initLightbox() {
     // Preload all gallery images at 1920px for smooth navigation
     function preloadGalleryImages(): void {
         galleryImages.forEach((image) => {
-            const fullUrl = getGalleryFullUrl(image.publicId);
+            const fullUrl = cloudinary
+                .image(image.publicId)
+                .resize(scale().width(1920))
+                .delivery(format(autoFormat()))
+                .delivery(quality(autoQuality()))
+                .toURL();
             const img = new Image();
             img.src = fullUrl;
         });

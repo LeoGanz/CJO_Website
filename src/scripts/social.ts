@@ -1,6 +1,23 @@
-import { getQrCodeUrl } from '../utils/cloudinary';
+import { Cloudinary } from '@cloudinary/url-gen';
+import { scale } from '@cloudinary/url-gen/actions/resize';
+import { format, quality } from '@cloudinary/url-gen/actions/delivery';
+import { auto as autoFormat } from '@cloudinary/url-gen/qualifiers/format';
+import { auto as autoQuality } from '@cloudinary/url-gen/qualifiers/quality';
 
-// QR code public IDs (constants for easy replacement)
+// Configuration
+const CLOUD_NAME = (import.meta as any).env?.VITE_CLOUDINARY_CLOUD_NAME || 'cjo';
+
+// Initialize Cloudinary for URL generation
+const cloudinary = new Cloudinary({
+    cloud: {
+        cloudName: CLOUD_NAME,
+    },
+    url: {
+        secure: true,
+    },
+});
+
+// QR code public IDs
 const QR_INSTAGRAM_PUBLIC_ID = 'qr_ig';
 const QR_YOUTUBE_PUBLIC_ID = 'qr_yt';
 
@@ -50,17 +67,29 @@ export function initSocialMedia() {
     initSocialMediaSections();
 
     // =========================================
-    // QR Code Images Setup
+    // QR Code Images
     // =========================================
 
     const qrInstagramImg = document.querySelector('#instagram-qr img') as HTMLImageElement;
     const qrYouTubeImg = document.querySelector('#youtube-qr img') as HTMLImageElement;
 
     if (qrInstagramImg) {
-        qrInstagramImg.src = getQrCodeUrl(QR_INSTAGRAM_PUBLIC_ID);
+        // Generate QR code URL (250px width for QR codes)
+        qrInstagramImg.src = cloudinary
+            .image(QR_INSTAGRAM_PUBLIC_ID)
+            .resize(scale().width(250))
+            .delivery(format(autoFormat()))
+            .delivery(quality(autoQuality()))
+            .toURL();
     }
 
     if (qrYouTubeImg) {
-        qrYouTubeImg.src = getQrCodeUrl(QR_YOUTUBE_PUBLIC_ID);
+        // Generate QR code URL (250px width for QR codes)
+        qrYouTubeImg.src = cloudinary
+            .image(QR_YOUTUBE_PUBLIC_ID)
+            .resize(scale().width(250))
+            .delivery(format(autoFormat()))
+            .delivery(quality(autoQuality()))
+            .toURL();
     }
 }

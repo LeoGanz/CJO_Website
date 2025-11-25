@@ -1,0 +1,139 @@
+@use '../base/variables' as *;
+
+// YouTube Consent Modal
+.youtube-consent {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(4px);
+
+    &--visible {
+        opacity: 1;
+    }
+
+    &--closing {
+        opacity: 0;
+    }
+
+    &__dialog {
+        background: $color-bg-light;
+        border: 1px solid rgba($color-brass, 0.2);
+        border-radius: 12px;
+        max-width: 500px;
+        width: 90%;
+        padding: 2.5rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+
+        .youtube-consent--visible & {
+            transform: scale(1);
+        }
+    }
+
+    &__content {
+        text-align: center;
+    }
+
+    &__icon {
+        width: 48px;
+        height: 48px;
+        color: $color-brass;
+        margin-bottom: 1.5rem;
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: $color-text-light;
+        margin-bottom: 1rem;
+    }
+
+    &__text {
+        color: $color-text-muted;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    &__privacy {
+        color: $color-text-muted;
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+
+        a {
+            color: $color-brass;
+            text-decoration: underline;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: $color-gold;
+            }
+        }
+    }
+
+    &__actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    &__button {
+        padding: 0.75rem 2rem;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: none;
+
+        &--cancel {
+            background: transparent;
+            color: $color-text-muted;
+            border: 1px solid rgba($color-text-muted, 0.3);
+
+            &:hover {
+                background: rgba($color-text-muted, 0.1);
+                border-color: $color-text-muted;
+            }
+        }
+
+        &--accept {
+            background: $color-brass;
+            color: $color-bg-dark;
+
+            &:hover {
+                background: $color-gold;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba($color-brass, 0.3);
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        &__dialog {
+            padding: 2rem;
+        }
+
+        &__title {
+            font-size: 1.5rem;
+        }
+
+        &__actions {
+            flex-direction: column;
+        }
+
+        &__button {
+            width: 100%;
+        }
+    }
+}

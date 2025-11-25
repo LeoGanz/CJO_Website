@@ -5,6 +5,7 @@ import { initSocialMedia } from './scripts/social';
 import { initForms } from './scripts/forms';
 import { initImages } from './scripts/images';
 import { initSmoke } from './scripts/smoke';
+import { initYouTube } from './scripts/youtube';
 
 // Initialize all modules
 initAnimations();
@@ -14,6 +15,7 @@ initSocialMedia();
 initForms();
 initImages();
 initSmoke();
+initYouTube();
 
 // =========================================
 // Console greeting

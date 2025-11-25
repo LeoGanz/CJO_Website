@@ -4,6 +4,7 @@ import { initGallery } from './scripts/gallery';
 import { initSocialMedia } from './scripts/social';
 import { initForms } from './scripts/forms';
 import { initImages } from './scripts/images';
+import { initSmoke } from './scripts/smoke';
 
 // Initialize all modules
 initAnimations();
@@ -12,6 +13,7 @@ initGallery();
 initSocialMedia();
 initForms();
 initImages();
+initSmoke();
 
 // =========================================
 // Console greeting

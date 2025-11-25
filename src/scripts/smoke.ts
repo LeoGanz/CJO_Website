@@ -70,7 +70,7 @@ export class SmokeAnimation {
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D;
     private particles: Particle[] = [];
-    private maxVelocity = 2;
+    private maxVelocity = 0.5;
     private imageObj: HTMLImageElement;
     private isRunning = false;
     private animationFrameId: number | null = null;
@@ -88,7 +88,7 @@ export class SmokeAnimation {
         this.context = ctx;
 
         this.imageObj = new Image();
-        this.imageObj.src = "http://www.blog.jonnycornwell.com/wp-content/uploads/2012/07/Smoke10.png";
+        this.imageObj.src = "https://www.blog.jonnycornwell.com/wp-content/uploads/2012/07/Smoke10.png";
 
         this.imageObj.onload = () => {
             this.particles.forEach(p => p.setImage(this.imageObj));

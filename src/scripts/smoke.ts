@@ -166,9 +166,8 @@ export class SmokeAnimation {
     }
 
     private draw() {
-        // Draw semi-transparent background matching page color for trail effect
-        this.context.fillStyle = "rgba(26, 21, 20, 0.5)"; // #1a1514 with 50% opacity
-        this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        // Clear canvas with transparency (instead of semi-transparent fill) to show date teaser behind
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         this.particles.forEach(particle => particle.draw());
     }

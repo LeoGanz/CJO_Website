@@ -56,26 +56,24 @@ export function initImages() {
     // =========================================
 
     // Generate logo URL (400px width for good quality that scales well)
-    const logoUrl = cloudinary
+    const smallLogoUrl = cloudinary
         .image(LOGO_PUBLIC_ID)
-        .resize(scale().width(400))
+        .resize(scale().width(120))
         .delivery(format(autoFormat()))
         .delivery(quality(autoQuality()))
         .toURL();
 
     // Update all logo images
-    const heroLogo = document.getElementById('hero-logo') as HTMLImageElement;
     const navLogo = document.getElementById('nav-logo') as HTMLImageElement;
     const footerLogo = document.getElementById('footer-logo') as HTMLImageElement;
 
-    if (heroLogo) heroLogo.src = logoUrl;
-    if (navLogo) navLogo.src = logoUrl;
-    if (footerLogo) footerLogo.src = logoUrl;
+    if (navLogo) navLogo.src = smallLogoUrl;
+    if (footerLogo) footerLogo.src = smallLogoUrl;
 
     // Update favicon
     const faviconLink = document.getElementById('favicon') as HTMLLinkElement;
     if (faviconLink) {
-        faviconLink.href = logoUrl;
+        faviconLink.href = smallLogoUrl;
     }
 }
 

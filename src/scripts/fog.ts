@@ -94,7 +94,13 @@ export class FogAnimation {
         };
 
         this.resize();
-        window.addEventListener('resize', () => this.resize());
+
+        // Throttle resize events to prevent flickering on mobile
+        let resizeTimeout: number;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = window.setTimeout(() => this.resize(), 150);
+        });
     }
 
     private getParticleCount(): number {

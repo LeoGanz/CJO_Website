@@ -1,5 +1,5 @@
 /**
- * Smoke Animation
+ * Fog Animation
  * Based on: https://jsfiddle.net/jonnyc/Ujz4P/5/
  */
 
@@ -18,7 +18,6 @@ class Particle {
 
     draw() {
         if (this.image) {
-            // Draw with fixed offset like original (128px)
             this.context.drawImage(this.image, this.x - 128, this.y - 128);
             return;
         }
@@ -66,11 +65,11 @@ class Particle {
     }
 }
 
-export class SmokeAnimation {
+export class FogAnimation {
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D;
     private particles: Particle[] = [];
-    private maxVelocity = 0.5;
+    private maxVelocity = 0.7;
     private imageObj: HTMLImageElement;
     private isRunning = false;
     private animationFrameId: number | null = null;
@@ -99,10 +98,6 @@ export class SmokeAnimation {
     }
 
     private getParticleCount(): number {
-        // Dynamic particle count based on screen width
-        // Mobile (≤768px): 25 particles
-        // Desktop (>1200px): 100 particles
-        // In between: scale linearly
         const width = window.innerWidth;
         let count: number;
 
@@ -111,7 +106,6 @@ export class SmokeAnimation {
         } else if (width >= 1200) {
             count = 100;
         } else {
-            // Linear interpolation between 25 and 100
             count = Math.round(25 + ((width - 768) / (1200 - 768)) * 75);
         }
 
@@ -156,7 +150,6 @@ export class SmokeAnimation {
                 this.generateRandom(-this.maxVelocity, this.maxVelocity)
             );
 
-            // Set image if already loaded
             if (this.imageObj.complete && this.imageObj.naturalWidth > 0) {
                 particle.setImage(this.imageObj);
             }
@@ -166,9 +159,7 @@ export class SmokeAnimation {
     }
 
     private draw() {
-        // Clear canvas with transparency (instead of semi-transparent fill) to show date teaser behind
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
         this.particles.forEach(particle => particle.draw());
     }
 
@@ -200,11 +191,11 @@ export class SmokeAnimation {
     }
 }
 
-export function initSmoke(): void {
+export function initFog(): void {
     try {
-        const smoke = new SmokeAnimation('myCanvas');
-        smoke.start();
+        const fog = new FogAnimation('myCanvas');
+        fog.start();
     } catch (e) {
-        console.warn('Smoke animation initialization failed:', e);
+        console.warn('Fog animation initialization failed:', e);
     }
 }

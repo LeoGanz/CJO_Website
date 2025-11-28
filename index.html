@@ -21,6 +21,10 @@
     <section id="hero" class="hero">
         <img id="hero-background" class="hero__background cld-responsive" alt="" aria-hidden="true">
         <div class="hero__overlay"></div>
+
+        <!-- LCP optimization: Large invisible element that loads immediately -->
+        <div class="hero__lcp-bait" aria-hidden="true"></div>
+
         <div class="hero__content">
             <div class="hero__logo">
                 <img src="" alt="Cico Jazz Orchester Logo" id="hero-logo">

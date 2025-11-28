@@ -14,10 +14,12 @@ interface YouTubePlayerConfig {
 }
 
 class YouTubePlayer {
+    private static readonly CLOUD_NAME = 'cjo';
+    private static instances: YouTubePlayer[] = [];
+    private static consentGiven: boolean = sessionStorage.getItem('youtube-consent') === 'true';
+
     private container: HTMLElement;
     private config: YouTubePlayerConfig;
-    private consentGiven: boolean = false;
-    private readonly CLOUD_NAME = 'cjo';
 
     constructor(container: HTMLElement) {
         this.container = container;
@@ -27,9 +29,9 @@ class YouTubePlayer {
             cloudinaryId: container.dataset.cloudinaryId
         };
 
-        this.consentGiven = sessionStorage.getItem(`youtube-consent`) === 'true';
+        YouTubePlayer.instances.push(this);
 
-        if (this.consentGiven) {
+        if (YouTubePlayer.consentGiven) {
             this.embedPlayer();
         } else {
             this.renderThumbnail();
@@ -38,7 +40,7 @@ class YouTubePlayer {
 
     private renderThumbnail(): void {
         const thumbnailUrl = this.config.cloudinaryId
-            ? `https://res.cloudinary.com/${this.CLOUD_NAME}/image/upload/c_fill,w_1280,h_720,g_auto,f_auto,q_auto/${this.config.cloudinaryId}`
+            ? `https://res.cloudinary.com/${YouTubePlayer.CLOUD_NAME}/image/upload/c_fill,w_1280,h_720,g_auto,f_auto,q_auto/${this.config.cloudinaryId}`
             : `https://img.youtube.com/vi/${this.config.videoId}/maxresdefault.jpg`;
 
         const html = thumbnailTemplate
@@ -47,8 +49,8 @@ class YouTubePlayer {
 
         this.container.innerHTML = html;
 
-        const playButton = this.container.querySelector('.youtube-player__play-button');
-        playButton?.addEventListener('click', () => this.showConsentDialog());
+        const thumbnail = this.container.querySelector('.youtube-player__thumbnail');
+        thumbnail?.addEventListener('click', () => this.showConsentDialog());
     }
 
     private showConsentDialog(): void {
@@ -69,7 +71,7 @@ class YouTubePlayer {
         cancelBtn?.addEventListener('click', closeModal);
 
         acceptBtn?.addEventListener('click', () => {
-            this.giveConsent();
+            this.giveConsentForAll();
             closeModal();
         });
 
@@ -92,14 +94,18 @@ class YouTubePlayer {
         });
     }
 
-    private giveConsent(): void {
-        this.consentGiven = true;
-        sessionStorage.setItem(`youtube-consent`, 'true');
-        this.embedPlayer();
+    private giveConsentForAll(): void {
+        YouTubePlayer.consentGiven = true;
+        sessionStorage.setItem('youtube-consent', 'true');
+
+        YouTubePlayer.instances.forEach(player => {
+            const shouldAutoplay = player === this;
+            player.embedPlayer(shouldAutoplay);
+        });
     }
 
-    private embedPlayer(): void {
-        const embedUrl = `https://www.youtube-nocookie.com/embed/${this.config.videoId}?autoplay=1`;
+    private embedPlayer(autoplay: boolean = false): void {
+        const embedUrl = `https://www.youtube-nocookie.com/embed/${this.config.videoId}?autoplay=${autoplay ? 1 : 0}`;
 
         const html = iframeTemplate
             .replace('{{embedUrl}}', embedUrl)

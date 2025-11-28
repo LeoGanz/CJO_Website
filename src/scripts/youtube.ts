@@ -11,6 +11,7 @@ interface YouTubePlayerConfig {
     videoId: string;
     videoTitle: string;
     cloudinaryId?: string;
+    part2VideoId?: string;
 }
 
 class YouTubePlayer {
@@ -26,13 +27,15 @@ class YouTubePlayer {
         this.config = {
             videoId: container.dataset.videoId || '',
             videoTitle: container.dataset.videoTitle || 'YouTube Video',
-            cloudinaryId: container.dataset.cloudinaryId
+            cloudinaryId: container.dataset.cloudinaryId,
+            part2VideoId: container.dataset.part2VideoId
         };
 
         YouTubePlayer.instances.push(this);
 
         if (YouTubePlayer.consentGiven) {
             this.embedPlayer();
+            this.setupPart2Link();
         } else {
             this.renderThumbnail();
         }
@@ -101,17 +104,41 @@ class YouTubePlayer {
         YouTubePlayer.instances.forEach(player => {
             const shouldAutoplay = player === this;
             player.embedPlayer(shouldAutoplay);
+            player.setupPart2Link();
         });
     }
 
     private embedPlayer(autoplay: boolean = false): void {
-        const embedUrl = `https://www.youtube-nocookie.com/embed/${this.config.videoId}?autoplay=${autoplay ? 1 : 0}`;
+        const embedUrl = `https://www.youtube-nocookie.com/embed/${this.config.videoId}?autoplay=${autoplay ? 1 : 0}&rel=0`;
 
         const html = iframeTemplate
             .replace('{{embedUrl}}', embedUrl)
             .replace('{{videoTitle}}', this.config.videoTitle);
 
         this.container.innerHTML = html;
+    }
+
+    // custom logic to show part 2 of the main concert
+    private setupPart2Link(): void {
+        if (!this.config.part2VideoId) return;
+
+        const part2Container = this.container.parentElement?.querySelector('.coming-soon__part2-container') as HTMLElement;
+        if (!part2Container) return;
+
+        setTimeout(() => {
+            part2Container.style.display = 'block';
+
+            const link = part2Container.querySelector('.coming-soon__part2-link') as HTMLElement;
+            const part2Player = part2Container.querySelector('.youtube-player--part2') as HTMLElement;
+
+            link?.addEventListener('click', (e) => {
+                e.preventDefault();
+                link.style.display = 'none';
+                part2Player.style.display = 'block';
+
+                new YouTubePlayer(part2Player);
+            });
+        }, 5 * 60 * 1000); // 5 minutes
     }
 }
 

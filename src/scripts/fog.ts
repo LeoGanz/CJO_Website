@@ -95,7 +95,6 @@ export class FogAnimation {
 
         this.resize();
 
-        // Throttle resize events to prevent flickering on mobile
         let resizeTimeout: number;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);

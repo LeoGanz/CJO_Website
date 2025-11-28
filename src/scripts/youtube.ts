@@ -3,6 +3,10 @@
  * Implements two-click consent pattern for GDPR compliance
  */
 
+import thumbnailTemplate from '../templates/youtube-thumbnail.html?raw';
+import consentTemplate from '../templates/youtube-consent.html?raw';
+import iframeTemplate from '../templates/youtube-iframe.html?raw';
+
 interface YouTubePlayerConfig {
     videoId: string;
     videoTitle: string;
@@ -23,7 +27,6 @@ class YouTubePlayer {
             cloudinaryId: container.dataset.cloudinaryId
         };
 
-        // Check session storage for consent
         this.consentGiven = sessionStorage.getItem(`youtube-consent`) === 'true';
 
         if (this.consentGiven) {
@@ -34,24 +37,15 @@ class YouTubePlayer {
     }
 
     private renderThumbnail(): void {
-        // Use Cloudinary thumbnail if provided, otherwise use YouTube thumbnail
         const thumbnailUrl = this.config.cloudinaryId
             ? `https://res.cloudinary.com/${this.CLOUD_NAME}/image/upload/c_fill,w_1280,h_720,g_auto,f_auto,q_auto/${this.config.cloudinaryId}`
             : `https://img.youtube.com/vi/${this.config.videoId}/maxresdefault.jpg`;
 
-        const thumbnailHTML = `
-            <div class="youtube-player__thumbnail">
-                <img src="${thumbnailUrl}" alt="${this.config.videoTitle}" loading="lazy">
-                <button class="youtube-player__play-button" aria-label="Video abspielen">
-                    <svg width="68" height="48" viewBox="0 0 68 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="currentColor"/>
-                        <path d="M45 24L27 14v20l18-10z" fill="#000"/>
-                    </svg>
-                </button>
-            </div>
-        `;
+        const html = thumbnailTemplate
+            .replace('{{thumbnailUrl}}', thumbnailUrl)
+            .replace('{{videoTitle}}', this.config.videoTitle);
 
-        this.container.innerHTML = thumbnailHTML;
+        this.container.innerHTML = html;
 
         const playButton = this.container.querySelector('.youtube-player__play-button');
         playButton?.addEventListener('click', () => this.showConsentDialog());
@@ -60,36 +54,10 @@ class YouTubePlayer {
     private showConsentDialog(): void {
         const modal = document.createElement('div');
         modal.className = 'youtube-consent';
-        modal.innerHTML = `
-            <div class="youtube-consent__dialog">
-                <div class="youtube-consent__content">
-                    <svg class="youtube-consent__icon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="currentColor"/>
-                    </svg>
-                    <h3 class="youtube-consent__title">YouTube Video laden?</h3>
-                    <p class="youtube-consent__text">
-                        Durch das Laden des Videos akzeptieren Sie die Datenschutzbestimmungen von YouTube.
-                        Es wird eine Verbindung zu YouTube hergestellt und Daten können übertragen werden.
-                    </p>
-                    <p class="youtube-consent__privacy">
-                        Mehr Informationen finden Sie in unserer 
-                        <a href="/datenschutz.html#youtube" target="_blank">Datenschutzerklärung</a>.
-                    </p>
-                    <div class="youtube-consent__actions">
-                        <button class="youtube-consent__button youtube-consent__button--cancel">
-                            Abbrechen
-                        </button>
-                        <button class="youtube-consent__button youtube-consent__button--accept">
-                            Video laden
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
+        modal.innerHTML = consentTemplate;
 
         document.body.appendChild(modal);
 
-        // Add event listeners
         const cancelBtn = modal.querySelector('.youtube-consent__button--cancel');
         const acceptBtn = modal.querySelector('.youtube-consent__button--accept');
 
@@ -105,14 +73,12 @@ class YouTubePlayer {
             closeModal();
         });
 
-        // Close on backdrop click
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 closeModal();
             }
         });
 
-        // Close on ESC key
         const handleEscape = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
                 closeModal();
@@ -121,7 +87,6 @@ class YouTubePlayer {
         };
         document.addEventListener('keydown', handleEscape);
 
-        // Trigger animation
         requestAnimationFrame(() => {
             modal.classList.add('youtube-consent--visible');
         });
@@ -134,22 +99,13 @@ class YouTubePlayer {
     }
 
     private embedPlayer(): void {
-        const iframeHTML = `
-            <div class="youtube-player__iframe">
-                <iframe 
-                    width="560" 
-                    height="315" 
-                    src="https://www.youtube-nocookie.com/embed/${this.config.videoId}" 
-                    title="${this.config.videoTitle}" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    referrerpolicy="strict-origin-when-cross-origin" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-        `;
+        const embedUrl = `https://www.youtube-nocookie.com/embed/${this.config.videoId}?autoplay=1`;
 
-        this.container.innerHTML = iframeHTML;
+        const html = iframeTemplate
+            .replace('{{embedUrl}}', embedUrl)
+            .replace('{{videoTitle}}', this.config.videoTitle);
+
+        this.container.innerHTML = html;
     }
 }
 

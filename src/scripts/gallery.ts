@@ -28,7 +28,7 @@ interface GalleryImage {
 const galleryImages: GalleryImage[] = [
     { publicId: 'sophia_axtmann', alt: 'Sängerin Sophia Axtmann' },
     { publicId: 'saxes', alt: 'Saxophonsection' },
-    { publicId: 'gesangsduo_craivoa', alt: 'Gesangsduo auf dem Craivo Jazz Festival' },
+    { publicId: 'tobi_solo', alt: 'Bandleader Tobias Baumgartner' },
     { publicId: 'hinterhalt_buehne', alt: 'Auftritt im Hinterhalt' },
     { publicId: 'bassist', alt: 'Bassist' },
     { publicId: 'gruppenfoto_craiova', alt: 'Gruppenfoto' },

@@ -27,6 +27,10 @@
         inset: 0;
         background: linear-gradient(135deg, rgba($color-bg-dark, 0.7) 0%, rgba($color-bg-dark, 0.6) 100%);
         z-index: 1;
+
+        @media (max-width: 768px) {
+            background: linear-gradient(135deg, rgba($color-bg-dark, 0.5) 0%, rgba($color-bg-dark, 0.4) 100%);
+        }
     }
 
     &__overlay {
@@ -38,6 +42,13 @@
             linear-gradient(180deg, rgba($color-bg-dark, 0.3) 0%, rgba($color-bg-dark, 0.6) 100%);
         pointer-events: none;
         z-index: 1;
+
+        @media (max-width: 768px) {
+            background:
+                radial-gradient(circle at 20% 50%, rgba($color-burgundy, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba($color-brass, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, rgba($color-bg-dark, 0.2) 0%, rgba($color-bg-dark, 0.4) 100%);
+        }
     }
 
     &__content {

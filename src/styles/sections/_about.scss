@@ -7,6 +7,12 @@
     &__content {
         max-width: 900px;
         margin: 0 auto;
+        position: relative; // Ensure relative positioning for absolute child
+    }
+
+    .lead {
+        font-size: 1.25rem;
+        font-weight: 800;
     }
 
     &__text {
@@ -19,6 +25,39 @@
             &:last-child {
                 margin-bottom: 0;
             }
+        }
+    }
+
+    &__quote {
+        text-align: center;
+        transform: rotate(-4deg); // Default slight rotation for mobile/tablet
+        max-width: 400px;
+        margin: 6rem auto 0;
+
+        blockquote {
+            font-family: $font-heading;
+            font-size: 1.3rem;
+            line-height: 1.4;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        cite {
+            display: block;
+            font-family: $font-heading;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-style: normal;
+            color: $color-burgundy-light;
+        }
+
+        @media (min-width: 1700px) {
+            position: absolute;
+            top: 25%;
+            right: -350px; // Move outside the content column
+            transform: translateY(-50%) rotate(25deg); // Center vertically and rotate 25deg
+            margin-top: 0;
+            text-align: left;
         }
     }
 

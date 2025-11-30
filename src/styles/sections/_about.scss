@@ -30,7 +30,6 @@
 
     &__quote {
         text-align: center;
-        transform: rotate(-4deg); // Default slight rotation for mobile/tablet
         max-width: 400px;
         margin: 6rem auto 0;
 
@@ -49,15 +48,6 @@
             font-weight: 700;
             font-style: normal;
             color: $color-burgundy-light;
-        }
-
-        @media (min-width: 1700px) {
-            position: absolute;
-            top: 25%;
-            right: -350px; // Move outside the content column
-            transform: translateY(-50%) rotate(25deg); // Center vertically and rotate 25deg
-            margin-top: 0;
-            text-align: left;
         }
     }
 

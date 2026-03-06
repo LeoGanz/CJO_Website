@@ -405,3 +405,120 @@
         }
     }
 }
+
+.tour-dates {
+    margin-bottom: 4rem;
+
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        background: rgba($color-bg-light, 0.5);
+        border-left: 3px solid $color-burgundy;
+        border-radius: 4px;
+        padding: 1.5rem;
+        gap: 2rem;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+    }
+
+    &__action {
+        margin-left: auto;
+
+        @media (max-width: 768px) {
+            margin-left: 0;
+            width: 100%;
+        }
+    }
+
+    &__btn {
+        white-space: nowrap;
+
+        @media (max-width: 768px) {
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+        }
+    }
+
+    &__date {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 100px;
+        color: $color-brass;
+        flex-shrink: 0;
+
+        @media (max-width: 768px) {
+            flex-direction: row;
+            gap: 0.5rem;
+            align-items: baseline;
+        }
+    }
+
+    &__day {
+        font-family: $font-heading;
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    &__year {
+        font-size: 1.1rem;
+        opacity: 0.8;
+    }
+
+    &__info {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    &__event {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: $color-text-light;
+    }
+
+    &__location {
+        font-size: 1.1rem;
+        font-weight: 400;
+
+        a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: $color-text-light;
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            svg {
+                color: $color-brass;
+                flex-shrink: 0;
+            }
+
+            &:hover {
+                color: $color-gold;
+            }
+        }
+    }
+
+    &__link {
+        font-size: 0.95rem;
+        margin-top: 0.5rem;
+    }
+}

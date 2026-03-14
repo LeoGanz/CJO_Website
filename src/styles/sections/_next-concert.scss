@@ -494,27 +494,48 @@
         color: $color-text-light;
     }
 
+    %tag-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 1rem;
+        font-weight: 400;
+        color: $color-text-light;
+        background: rgba($color-brass, 0.08);
+        padding: 0.2rem 0.8rem;
+        border-radius: 2rem;
+
+        svg {
+            color: $color-brass;
+            flex-shrink: 0;
+        }
+    }
+
+    &__details {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        column-gap: 1.5rem;
+        row-gap: 0.5rem;
+    }
+
     &__location {
-        font-size: 1.1rem;
         font-weight: 400;
 
         a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: $color-text-light;
+            @extend %tag-pill;
             text-decoration: none;
-            transition: color 0.3s ease;
-
-            svg {
-                color: $color-brass;
-                flex-shrink: 0;
-            }
+            transition: all 0.3s ease;
 
             &:hover {
-                color: $color-gold;
+                color: $color-brass;
+                background: rgba($color-brass, 0.1);
             }
         }
+    }
+
+    &__time {
+        @extend %tag-pill;
     }
 
     &__link {

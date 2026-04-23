@@ -228,7 +228,7 @@
     &__part2-container {
         margin-top: 3rem;
         text-align: center;
-        animation: fadeIn 0.5s ease-in;
+        animation: fadeInUpSmall 0.5s ease-in;
     }
 
     &__part2-link {
@@ -319,17 +319,7 @@
     }
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 // YouTube Player Styles
 .youtube-player {
@@ -436,21 +426,40 @@
 
     &__action {
         margin-left: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
 
         @media (max-width: 768px) {
             margin-left: 0;
             width: 100%;
+
+            &:not(:has(.tour-dates__btn)) {
+                align-items: flex-start;
+            }
+        }
+    }
+
+    &__note {
+        font-size: 0.85rem;
+        color: rgba($color-text-light, 0.8);
+        text-align: center;
+        line-height: 1.4;
+        margin: 0;
+
+        @media (max-width: 768px) {
+            .tour-dates__action:not(:has(.tour-dates__btn)) & {
+                text-align: left;
+            }
         }
     }
 
     &__btn {
         white-space: nowrap;
-
-        @media (max-width: 768px) {
-            width: 100%;
-            text-align: center;
-            justify-content: center;
-        }
+        text-align: center;
+        justify-content: center;
+        width: 100%;
     }
 
     &__date {

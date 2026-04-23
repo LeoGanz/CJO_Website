@@ -6,6 +6,7 @@ import { initForms } from './scripts/forms';
 import { initImages } from './scripts/images';
 import { initFog } from './scripts/fog';
 import { initYouTube } from './scripts/youtube';
+import { initConcertButtonWidths } from './scripts/tourDates';
 
 // Initialize all modules
 initAnimations();
@@ -16,6 +17,7 @@ initForms();
 initImages();
 initFog();
 initYouTube();
+initConcertButtonWidths();
 
 // =========================================
 // Console greeting

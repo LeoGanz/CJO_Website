@@ -13,6 +13,7 @@ export default defineConfig({
         impressum: resolve(__dirname, 'impressum.html'),
         datenschutz: resolve(__dirname, 'datenschutz.html'),
         landing: resolve(__dirname, 'landing.html'),
+        landing2: resolve(__dirname, 'landing2.html'),
       },
     },
   },

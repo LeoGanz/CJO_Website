@@ -1,2 +1,5 @@
+User-agent: *
+Disallow: /landing
+Disallow: /landing.html
 
 Sitemap: https://cicojazz.de/sitemap.xml

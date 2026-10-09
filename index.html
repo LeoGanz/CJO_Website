@@ -18,16 +18,50 @@
 </head>
 
 <body>
+    <!-- Top Concert Announcement Banner 
+    <div class="concert-banner">
+        <div class="concert-banner__container">
+            <span class="concert-banner__tag">Konzert-Tipp</span>
+            <span class="concert-banner__text">
+                <strong>Samstag, 24. Oktober 2026</strong> · Kulturbühne Hinterhalt Geretsried
+                <span class="concert-banner__badge">(<span data-concert-countdown data-format="full">in 14
+                        Tagen</span>)</span>
+            </span>
+            <a href="#next-concert" class="concert-banner__link">Tickets & Programm ansehen →</a>
+        </div>
+    </div>-->
+
     <section id="hero" class="hero">
-        <img id="hero-background" class="hero__background cld-responsive" alt="" aria-hidden="true">
+        <img id="hero-background" class="hero__background" src="/assets/hero_band1.png" alt="Cico Jazz Orchester Live"
+            aria-hidden="true">
         <div class="hero__overlay"></div>
         <div class="hero__content">
+            <div class="hero__badge">
+                <span class="hero__badge-pulse"></span>
+                <span class="hero__badge-date">Samstag · 24. Oktober 2026</span>
+                <span class="hero__badge-dot">•</span>
+                <span class="hero__badge-venue">Kulturbühne Hinterhalt</span>
+                <span class="hero__badge-countdown" data-concert-countdown data-format="short">Noch 14 Tage</span>
+            </div>
             <div class="hero__logo">
-                <img src="" alt="Cico Jazz Orchester Logo" id="hero-logo">
+                <img src="/assets/bandlogo_negativ.png" alt="Cico Jazz Orchester Logo" id="hero-logo">
             </div>
             <h1 class="hero__title">Cico Jazz Orchester</h1>
-            <p class="hero__subtitle">Musik, die verbindet</p>
-            <a href="#next-concert" class="hero__cta">Auftritte</a>
+            <p class="hero__subtitle">— Swing, Funk, Latin and more —</p>
+            <div class="hero__actions">
+                <a href="mailto:info@hinterhalt.de?subject=Kartenreservierung%20Cico%20Jazz%20Orchester%2024.10.2026&body=Hallo%20Hinterhalt-Team,%0A%0Ahiermit%20m%C3%B6chte%20ich%20Karten%20f%C3%BCr%20das%20Konzert%20des%20Cico%20Jazz%20Orchesters%20am%2024.10.2026%20reservieren.%0A%0AAnzahl%20Karten:%20%0AName:%20%0ATelefon:%20%0A%0AVielen%20Dank!"
+                    class="btn btn--primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M15 5v2M15 11v2M15 17v2M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4V7a2 2 0 0 1 2-2z" />
+                    </svg>
+                    Jetzt reservieren
+                </a>
+                <a href="#next-concert" class="btn btn--secondary">
+                    Konzert-Details
+                </a>
+            </div>
         </div>
         <div class="hero__scroll-indicator">
             <span>Scroll</span>
@@ -38,12 +72,13 @@
     <nav class="nav">
         <div class="nav__container">
             <a href="#" class="nav__logo">
-                <img src="" alt="CJO" id="nav-logo">
+                <img src="/assets/bandlogo_negativ.png" alt="CJO" id="nav-logo">
             </a>
 
             <ul class="nav__menu">
                 <li><a href="#about">Über Uns</a></li>
-                <li><a href="#next-concert">Auftritte</a></li>
+                <li><a href="#next-concert" class="nav__link--concert">Konzert <span class="nav__badge"
+                            data-concert-countdown data-format="short">24.10.</span></a></li>
                 <li><a href="#gallery">Impressionen</a></li>
                 <li><a href="#social-media">Social Media</a></li>
                 <li><a href="#contact">Kontakt</a></li>
@@ -92,15 +127,34 @@
 
     <section id="next-concert" class="next-concert">
         <div class="container">
-            <h2 class="section-title">Auftritte</h2>
-            <!-- <div class="concert">
-                <div class="concert__poster">
-                    <img id="concert-poster" class="cld-responsive" data-src=""
-                        alt="Konzertplakat: Cico Jazz Orchester feat. The Starlet Ladies">
+            <div class="next-concert__header">
+                <div class="next-concert__eyebrow">
+                    <span class="next-concert__pulse"></span>
+                    <span>Nächstes Konzert · <span data-concert-countdown data-format="full">in 14 Tagen</span></span>
                 </div>
+                <h2 class="section-title">Konzert im Hinterhalt</h2>
+                <p class="next-concert__tagline">— Swing, Funk, Latin and more —</p>
+            </div>
+
+            <div class="concert">
+                <div class="concert__poster" title="Klicken zum Vergrößern">
+                    <img id="concert-poster" src="/assets/2026-09-25 Plakat Hinterhalt 24.10.26.png"
+                        data-full-url="/assets/2026-09-25 Plakat Hinterhalt 24.10.26.png"
+                        alt="Konzertplakat: Cico Jazz Orchester - 24. Oktober 2026 Kulturbühne Hinterhalt">
+                    <div class="concert__poster-badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            <line x1="11" y1="8" x2="11" y2="14"></line>
+                            <line x1="8" y1="11" x2="14" y2="11"></line>
+                        </svg>
+                        <span>Plakat vergrößern</span>
+                    </div>
+                </div>
+
                 <div class="concert__details">
-                    <h3 class="concert__title">Cico Jazz Orchester</h3>
-                    <p class="concert__subtitle">feat. The Starlet Ladies</p>
+
 
                     <div class="concert__info">
                         <div class="concert__info-item">
@@ -108,7 +162,7 @@
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M8 2v3M16 2v3M3.5 9.09h17M21 8.5V17c0 3-1.5 5-5 5H8c-3.5 0-5-2-5-5V8.5c0-3 1.5-5 5-5h8c3.5 0 5 2 5 5z"
-                                    stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"
+                                    stroke="currentColor" stroke-width="1.8" stroke-miterlimit="10"
                                     stroke-linecap="round" stroke-linejoin="round" />
                                 <path
                                     d="M15.695 13.7h.009M15.695 16.7h.009M11.995 13.7h.01M11.995 16.7h.01M8.294 13.7h.01M8.294 16.7h.01"
@@ -116,8 +170,8 @@
                                     stroke-linejoin="round" />
                             </svg>
                             <div>
-                                <strong>7. November 2025</strong>
-                                <span>20:00 Uhr</span>
+                                <strong>Samstag, 24. Oktober 2026</strong>
+                                <span>Beginn: 20:00 Uhr · Einlass: 19:30 Uhr</span>
                             </div>
                         </div>
 
@@ -125,13 +179,18 @@
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 13.43a3.12 3.12 0 100-6.24 3.12 3.12 0 000 6.24z" stroke="currentColor"
-                                    stroke-width="1.5" />
+                                    stroke-width="1.8" />
                                 <path
                                     d="M3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.193 5.193 0 01-7.21 0c-2.76-2.66-5.92-6.97-4.77-12.05z"
-                                    stroke="currentColor" stroke-width="1.5" />
+                                    stroke="currentColor" stroke-width="1.8" />
                             </svg>
                             <div>
-                                <strong>Kulturbühne Hinterhalt</strong>
+                                <strong>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=Kulturb%C3%BChne+Hinterhalt%2C+Leitenstra%C3%9Fe+40%2C+82538+Geretsried-Gelting"
+                                        target="_blank" rel="noopener noreferrer">
+                                        Kulturbühne Hinterhalt
+                                    </a>
+                                </strong>
                                 <span>Leitenstraße 40, 82538 Geretsried-Gelting</span>
                             </div>
                         </div>
@@ -141,100 +200,75 @@
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M16.5 8C15.5 6.7 13.95 6 12.2 6C9.3 6 7 8.6 7 12C7 15.4 9.3 18 12.2 18C13.95 18 15.5 17.3 16.5 16M8 10.5H13M8 13.5H13"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
                                     stroke-linejoin="round" />
                                 <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
                             <div>
-                                <strong>Eintritt: 20€</strong>
+                                <strong>Eintritt: 20 € Abendkasse</strong>
                                 <span>Ermäßigung auf Anfrage</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="concert__description">
-                        <p>Nach einem gefeierten Auftritt im März kehrt das Cico Jazz Orchester zurück auf die
-                            Kulturbühne Hinterhalt – diesmal mit drei ausdrucksstarken Sängerinnen.</p>
-                        <p>Ob eingefleischter Jazz-Fan oder Neuling in der Welt der Live-Musik, das Cico Jazz Orchester
-                            schafft einen Abend, der mitreißt, bewegt und die Herzen der Zuschauer berührt. Ein Konzert,
-                            das nicht nur die Ohren, sondern auch die Füße in Bewegung bringt – ein Erlebnis, das noch
-                            lange nachklingen wird.</p>
-                        <p class="concert__reservation"><strong>Reservierungen dringend empfohlen – es wird wieder
-                                voll!</strong></p>
+                        <p>Das 20-köpfige Cico Jazz Orchester kehrt zurück auf die Kulturbühne Hinterhalt! Freut euch
+                            auf mitreißende Grooves, packende Bläsersätze und virtuose Soli quer durch Jazz, Swing, Funk
+                            und Latin.</p>
+                        <p>Ob eingefleischter Jazz-Fan oder Neuling in der Welt der Live-Musik: Dieses Konzerterlebnis
+                            bringt nicht nur die Ohren, sondern auch die Füße in Bewegung.</p>
                     </div>
 
-                    <div class="concert__actions">
-                        <a href="https://hinterhalt.de/veranstaltung/cico-jazz-orchester/" target="_blank"
-                            rel="noopener noreferrer" class="btn btn--primary">Tickets & Info</a>
+                    <div class="concert__calendar-links">
+                        <span>Termin vormerken:</span>
+                        <a href="https://www.google.com/calendar/event?action=TEMPLATE&dates=20261024T200000/20261024T220000&text=Cico%20Jazz%20Orchester&location=Kulturb%C3%BChne%20Hinterhalt,%20Leitenstra%C3%9Fe%2040,%2082538%20Geretsried&details=Cico%20Jazz%20Orchester%20live%20auf%20der%20Kulturb%C3%BChne%20Hinterhalt"
+                            target="_blank" rel="noopener noreferrer">
+                            Google Kalender
+                        </a>
+                        <span>·</span>
+                        <a href="https://hinterhalt.de/veranstaltung/cico-jazz-orchester-2/?ical=1" target="_blank"
+                            rel="noopener noreferrer">
+                            Apple / iCal Datei (.ics)
+                        </a>
                     </div>
-                </div>
-            </div> -->
 
-            <!--<div class="coming-soon">
-                <div class="coming-soon__content">
-                    <h3 class="coming-soon__title">Coming Soon</h3>
-                    <p class="coming-soon__message">
-                        Vorfreude ist bekanntlich eine der schönsten Freuden.
-                        <br />
-                        Deswegen seid gespannt – wir haben mehrere Projekte in Absprache!
-                    </p>
+                    <a href="https://hinterhalt.de/veranstaltung/cico-jazz-orchester-2" target="_blank"
+                        rel="noopener noreferrer" class="concert__qrcode-box">
+                        <img src="/assets/qr_code.png" alt="QR Code Hinterhalt" class="concert__qrcode-box-img">
+                        <div class="concert__qrcode-box-text">
+                            <strong>Infos zur Location auf hinterhalt.de</strong>
+                            <span class="concert__qrcode-subtext concert__qrcode-subtext--desktop">QR-Code scannen für
+                                Anfahrt, Parken & Gastronomie vor Ort</span>
+                            <span class="concert__qrcode-subtext concert__qrcode-subtext--mobile">Hier tippen für Infos
+                                zu Anfahrt, Parken & Gastronomie</span>
+                        </div>
+                    </a>
                 </div>
-                <div class="coming-soon__fog-container">
-                    <div class="coming-soon__date-teaser">
-                        <div class="coming-soon__date-line">09.05.2026</div>
-                        <div class="coming-soon__date-line">09.05.2026</div>
-                        <div class="coming-soon__date-line">09.05.2026</div>
-                        <div class="coming-soon__date-line">09.05.2026</div>
-                        <div class="coming-soon__date-line">09.05.2026</div>
-                    </div>
-                    <canvas id="myCanvas" width="400" height="400"></canvas>
-                </div>
-            </div> -->
+            </div>
+            <div class="concert__reservation-warning">
+                <span>⚠️ <strong>Reservierung dringend empfohlen</strong> – es wird wieder voll!</span>
+                <a href="mailto:info@hinterhalt.de?subject=Kartenreservierung%20Cico%20Jazz%20Orchester%2024.10.2026&body=Hallo%20Hinterhalt-Team,%0A%0Ahiermit%20m%C3%B6chte%20ich%20Karten%20f%C3%BCr%20das%20Konzert%20des%20Cico%20Jazz%20Orchesters%20am%2024.10.2026%20reservieren.%0A%0AAnzahl%20Karten:%20%0AName:%20%0ATelefon:%20%0A%0AVielen%20Dank!"
+                    class="btn btn--primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M15 5v2M15 11v2M15 17v2M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4V7a2 2 0 0 1 2-2z" />
+                    </svg>
+                    Jetzt reservieren
+                </a>
+            </div>
+
+            <div class="concert__divider">
+                <img src="/assets/linie_blau.png" alt="" aria-hidden="true">
+            </div>
 
             <div class="tour-dates">
+                <h3
+                    style="font-size: 1.25rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; text-align: center;">
+                    Weitere Termine</h3>
                 <ul class="tour-dates__list">
-
-                    <li class="tour-dates__item">
-                        <div class="tour-dates__date">
-                            <span class="tour-dates__day">24.10.</span>
-                            <span class="tour-dates__year">2026</span>
-                        </div>
-                        <div class="tour-dates__info">
-                            <div class="tour-dates__event">Kulturbühne Hinterhalt</div>
-                            <div class="tour-dates__details">
-                                <h3 class="tour-dates__location">
-                                    <a href="https://www.google.com/maps/search/?api=1&query=Kulturb%C3%BChne+Hinterhalt%2C+Leitenstra%C3%9Fe+40%2C+82538+Geretsried-Gelting"
-                                        target="_blank" rel="noopener noreferrer">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 13.43a3.12 3.12 0 100-6.24 3.12 3.12 0 000 6.24z"
-                                                stroke="currentColor" stroke-width="1.5" />
-                                            <path
-                                                d="M3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.193 5.193 0 01-7.21 0c-2.76-2.66-5.92-6.97-4.77-12.05z"
-                                                stroke="currentColor" stroke-width="1.5" />
-                                        </svg>
-                                        Leitenstraße 40, 82538 Geretsried-Gelting
-                                    </a>
-                                </h3>
-                                <div class="tour-dates__time">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
-                                        <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                    19 Uhr
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tour-dates__action">
-                            <a href="https://hinterhalt.de/veranstaltung/cico-jazz-orchester-2/" target="_blank"
-                                rel="noopener noreferrer"
-                                class="btn btn--primary btn--small tour-dates__btn">Reservierung & Info</a>
-                        </div>
-                    </li>
 
                     <li class="tour-dates__item">
                         <div class="tour-dates__date">

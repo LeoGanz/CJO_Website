@@ -1,24 +1,39 @@
 // Variables & Color Scheme
-// Jazz Club Theme: Dark, Burgundy Red, Brass/Gold accents
+// Concert Poster Theme (24.10.2026 Hinterhalt): Electric Cyan, Neon Blue, Stage Black
 
 // Colors
-$color-bg-dark: #0a0a0a;
-$color-bg-medium: #1a1514;
-$color-bg-light: #2a221f;
-$color-burgundy: #8b1e3f;
-$color-burgundy-light: #a52a4a;
-$color-burgundy-dark: #6b1830;
-$color-brass: #d4a574;
-$color-gold: #daa520;
-$color-text-light: #f5f5f5;
-$color-text-muted: #b8b8b8;
-$color-accent: #c5997c;
+$color-bg-dark: #03070d;
+$color-bg-medium: #07131e;
+$color-bg-light: #0d1e30;
+
+// Poster Electric Cyan & Blue Palette
+$color-cyan: #00e5ff;
+$color-cyan-light: #70f3ff;
+$color-cyan-dark: #0090b8;
+$color-blue: #0284c7;
+$color-blue-dark: #0369a1;
+
+// Theme color mappings
+$color-burgundy: #0077a8;
+$color-burgundy-light: #00a8e8;
+$color-burgundy-dark: #005073;
+$color-brass: #00e5ff;
+$color-gold: #38bdf8;
+$color-text-light: #ffffff;
+$color-text-muted: #94a3b8;
+$color-accent: #00e5ff;
 $color-success: #10b981;
 $color-error: #ef4444;
 
+// Neon Glows
+$glow-cyan-sm: 0 0 10px rgba(0, 229, 255, 0.5);
+$glow-cyan-md: 0 0 20px rgba(0, 229, 255, 0.6), 0 0 40px rgba(0, 180, 216, 0.3);
+$glow-cyan-lg: 0 0 30px rgba(0, 229, 255, 0.7), 0 0 60px rgba(0, 180, 216, 0.4);
+
 // Typography
-$font-heading: 'Playfair Display', serif;
-$font-body: 'Inter', sans-serif;
+$font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-serif: 'Playfair Display', serif;
+$font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
 // Transitions
 $transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);

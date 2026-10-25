@@ -1,7 +1,7 @@
 @use '../base/variables' as *;
 
 .next-concert {
-    padding: 7rem 0 5rem;
+    padding: 8rem 0;
     background: $color-bg-medium;
     position: relative;
 
@@ -11,9 +11,8 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, $color-cyan, transparent);
-        box-shadow: 0 0 15px $color-cyan;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, $color-brass, transparent);
         opacity: 0;
         transform: scaleX(0);
         transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
@@ -25,227 +24,83 @@
         transform: scaleX(1);
     }
 
-    &__header {
-        text-align: center;
-        margin-bottom: 4rem;
-
-        h2 {
-            margin-bottom: 0rem;
-        }
-    }
-
-    &__eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: rgba($color-cyan, 0.08);
-        border: 1px solid rgba($color-cyan, 0.4);
-        padding: 0.4rem 1.1rem;
-        border-radius: 30px;
-        color: $color-cyan;
-        font-size: 0.88rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        margin-bottom: 1rem;
-        box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
-    }
-
-    &__pulse {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: $color-cyan;
-        box-shadow: 0 0 8px $color-cyan;
-        animation: pulseGlow 1.8s infinite;
-    }
-
-    &__tagline {
-        font-size: 1.2rem;
-        color: $color-text-muted;
-    }
-
     @media (max-width: 768px) {
-        padding: 5rem 0 3rem;
+        padding: 5rem 0;
     }
 }
 
 .concert {
     display: grid;
-    grid-template-columns: 1fr 1.35fr;
+    grid-template-columns: 1fr 1.5fr;
     gap: 4rem;
     align-items: start;
-    margin-bottom: 2rem;
 
     &__poster {
         position: sticky;
-        top: 100px;
-        border-radius: 12px;
+        top: 120px;
+        border-radius: 8px;
         overflow: hidden;
-        border: 1.5px solid rgba($color-cyan, 0.4);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba($color-cyan, 0.25);
-        cursor: pointer;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        background: $color-bg-dark;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 
         img {
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.4s ease;
-        }
-
-        &:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 50px rgba($color-cyan, 0.45);
-
-            img {
-                transform: scale(1.02);
-            }
-
-            .concert__poster-badge {
-                background: rgba(#03070d, 0.95);
-                border-color: $color-cyan;
-                box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
-            }
-        }
-
-        &-badge {
-            position: absolute;
-            bottom: 16px;
-            right: 16px;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            background: rgba($color-bg-dark, 0.85);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba($color-cyan, 0.5);
-            border-radius: 20px;
-            padding: 0.4rem 0.9rem;
-            color: $color-cyan;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-
-            svg {
-                width: 15px;
-                height: 15px;
-            }
         }
     }
 
     &__details {
-        padding: 0;
-    }
-
-    &__venue-banner {
-        display: flex;
-        align-items: center;
-        gap: 1.25rem;
-        margin-bottom: 1.75rem;
-        padding-bottom: 1.25rem;
-        border-bottom: 1px solid rgba($color-cyan, 0.2);
-
-        &-eyes {
-            width: clamp(75px, 10vw, 110px);
-            height: auto;
-            filter: drop-shadow(0 0 15px rgba($color-cyan, 0.7));
-            flex-shrink: 0;
-        }
-
-        &-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-        }
-
-        &-tag {
-            color: $color-cyan;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-weight: 600;
-        }
-
-        &-name {
-            font-family: $font-heading;
-            font-size: clamp(1.4rem, 2.5vw, 2.2rem);
-            font-weight: 800;
-            color: #ffffff;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            text-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
-        }
+        padding: 2rem 0;
     }
 
     &__title {
         font-family: $font-heading;
-        font-size: clamp(1.8rem, 3.2vw, 2.8rem);
-        font-weight: 900;
-        color: #ffffff;
-        margin-bottom: 0.4rem;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: $color-text-light;
+        margin-bottom: 0.5rem;
     }
 
     &__subtitle {
-        font-size: 1.25rem;
-        color: $color-cyan;
-        margin-bottom: 1.75rem;
-        font-weight: 500;
-        letter-spacing: 0.08em;
+        font-size: 1.5rem;
+        color: $color-brass;
+        margin-bottom: 2rem;
+        font-style: italic;
     }
 
     &__info {
         display: flex;
         flex-direction: column;
-        gap: 1.25rem;
+        gap: 1.5rem;
         margin-bottom: 2rem;
-        padding: 1.75rem 2rem;
-        background: rgba($color-bg-light, 0.6);
-        border: 1px solid rgba($color-cyan, 0.25);
-        border-left: 4px solid $color-cyan;
-        border-radius: 8px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        backdrop-filter: blur(10px);
+        padding: 2rem;
+        background: rgba($color-bg-light, 0.5);
+        border-left: 3px solid $color-burgundy;
+        border-radius: 4px;
     }
 
     &__info-item {
         display: flex;
-        gap: 1.25rem;
-        align-items: center;
+        gap: 1rem;
+        align-items: flex-start;
 
         svg {
             flex-shrink: 0;
             width: 24px;
             height: 24px;
-            color: $color-cyan;
-            filter: drop-shadow(0 0 5px rgba($color-cyan, 0.5));
+            color: $color-brass;
+            margin-top: 0.2rem;
         }
 
         div {
             display: flex;
             flex-direction: column;
-            gap: 0.2rem;
+            gap: 0.25rem;
         }
 
         strong {
-            color: #ffffff;
+            color: $color-text-light;
             font-size: 1.1rem;
-            font-weight: 700;
-
-            a {
-                color: #ffffff;
-                text-decoration: none;
-                transition: color 0.2s ease;
-
-                &:hover {
-                    color: $color-cyan;
-                }
-            }
         }
 
         span {
@@ -254,227 +109,25 @@
         }
     }
 
-    // Soloists Section
-    &__soloists {
-        margin: 2rem 0;
-        padding: 1.5rem;
-        background: rgba($color-bg-dark, 0.6);
-        border: 1px solid rgba($color-cyan, 0.2);
-        border-radius: 8px;
-
-        &-title {
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: $color-cyan;
-            margin-bottom: 1.25rem;
-            text-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
-        }
-
-        &-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-
-            @media (max-width: 540px) {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.25rem;
-            }
-        }
-
-        &-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 0.5rem;
-
-            img {
-                width: 72px;
-                height: 72px;
-                border-radius: 50%;
-                object-fit: cover;
-                border: 2px solid rgba($color-cyan, 0.6);
-                box-shadow: 0 0 15px rgba(0, 229, 255, 0.35);
-                transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-            }
-
-            span {
-                font-size: 0.85rem;
-                font-weight: 600;
-                color: #ffffff;
-                letter-spacing: 0.03em;
-            }
-
-            &:hover img {
-                transform: scale(1.1);
-                border-color: $color-cyan;
-                box-shadow: 0 0 25px rgba(0, 229, 255, 0.7);
-            }
-        }
-    }
-
     &__description {
-        margin-bottom: 1.75rem;
+        margin-bottom: 2rem;
 
         p {
-            color: #cbd5e1;
+            color: $color-text-muted;
             line-height: 1.8;
             margin-bottom: 1rem;
-            font-size: 1.05rem;
         }
     }
 
-    &__reservation-warning {
-        background: rgba($color-cyan, 0.08);
-        border: 1px solid rgba($color-cyan, 0.4);
-        border-radius: 8px;
-        padding: 1rem 1.25rem;
-        margin-bottom: 2rem;
-        color: #ffffff;
-        font-size: 0.95rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1.25rem;
-
-        strong {
-            color: $color-cyan;
-        }
-
-        .btn {
-            flex-shrink: 0;
-            white-space: nowrap;
-        }
-
-        @media (max-width: 768px) {
-            flex-direction: column;
-            align-items: stretch;
-            text-align: center;
-            gap: 1rem;
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
+    &__reservation {
+        color: $color-brass !important;
+        font-size: 1.1rem !important;
     }
 
     &__actions {
         display: flex;
         gap: 1rem;
         flex-wrap: wrap;
-        margin-bottom: 1.5rem;
-    }
-
-    &__calendar-links {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        flex-wrap: wrap;
-        font-size: 0.85rem;
-        color: $color-text-muted;
-        margin-bottom: 1.75rem;
-
-        span {
-            font-weight: 500;
-        }
-
-        a {
-            color: $color-cyan;
-            text-decoration: none;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            background: rgba($color-cyan, 0.08);
-            border: 1px solid rgba($color-cyan, 0.25);
-            transition: all 0.2s ease;
-
-            &:hover {
-                background: rgba($color-cyan, 0.2);
-                border-color: $color-cyan;
-            }
-        }
-    }
-
-    &__qrcode-box {
-        display: flex;
-        align-items: center;
-        gap: 1.25rem;
-        background: rgba($color-bg-dark, 0.75);
-        border: 1px dashed rgba($color-cyan, 0.35);
-        border-radius: 8px;
-        padding: 1rem 1.25rem;
-        text-decoration: none;
-        transition: all 0.3s $transition-smooth;
-        cursor: pointer;
-
-        &:hover {
-            background: rgba($color-bg-dark, 0.95);
-            border-color: $color-cyan;
-            box-shadow: 0 4px 20px rgba($color-cyan, 0.2);
-            transform: translateY(-2px);
-
-            strong {
-                color: $color-cyan;
-            }
-        }
-
-        &-img {
-            width: 64px;
-            height: 64px;
-            border-radius: 6px;
-            background: #ffffff;
-            padding: 4px;
-            flex-shrink: 0;
-
-            @media (max-width: 768px) {
-                display: none;
-            }
-        }
-
-        &-text {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-
-            strong {
-                color: #ffffff;
-                font-size: 0.95rem;
-                transition: color 0.2s $transition-smooth;
-            }
-
-            span {
-                color: $color-text-muted;
-                font-size: 0.85rem;
-            }
-
-            .concert__qrcode-subtext--mobile {
-                display: none;
-            }
-
-            @media (max-width: 768px) {
-                .concert__qrcode-subtext--desktop {
-                    display: none;
-                }
-
-                .concert__qrcode-subtext--mobile {
-                    display: inline;
-                }
-            }
-        }
-    }
-
-    &__divider {
-        width: 100%;
-        margin: 4.5rem 0 3rem;
-        text-align: center;
-
-        img {
-            max-width: 100%;
-            height: auto;
-            filter: drop-shadow(0 0 10px rgba($color-cyan, 0.6));
-        }
     }
 
     @media (max-width: 1024px) {
@@ -484,20 +137,26 @@
         &__poster {
             position: relative;
             top: 0;
-            max-width: 480px;
+            max-width: 500px;
             margin: 0 auto;
+        }
+
+        &__title {
+            font-size: 2rem;
+        }
+
+        &__subtitle {
+            font-size: 1.25rem;
         }
     }
 
     @media (max-width: 768px) {
-        &__info {
-            padding: 1.25rem;
+        &__title {
+            font-size: 1.75rem;
         }
 
-        &__venue-banner {
-            flex-direction: column;
-            text-align: center;
-            gap: 0.75rem;
+        &__info {
+            padding: 1.5rem;
         }
     }
 }

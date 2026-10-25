@@ -7,7 +7,6 @@ import { initImages } from './scripts/images';
 import { initFog } from './scripts/fog';
 import { initYouTube } from './scripts/youtube';
 import { initConcertButtonWidths } from './scripts/tourDates';
-import { initConcertHighlight } from './scripts/concertHighlight';
 
 // Initialize all modules
 initAnimations();
@@ -19,7 +18,6 @@ initImages();
 initFog();
 initYouTube();
 initConcertButtonWidths();
-initConcertHighlight();
 
 // =========================================
 // Console greeting

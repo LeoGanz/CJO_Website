@@ -1,8 +1,23 @@
 import { Cloudinary, CloudinaryImage } from '@cloudinary/url-gen';
-import { scale } from '@cloudinary/url-gen/actions/resize';
+import { scale, fill } from '@cloudinary/url-gen/actions/resize';
 import { format, quality } from '@cloudinary/url-gen/actions/delivery';
 import { auto as autoFormat } from '@cloudinary/url-gen/qualifiers/format';
 import { auto as autoQuality } from '@cloudinary/url-gen/qualifiers/quality';
+import { compass, focusOn, autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
+import {
+    north,
+    south,
+    east,
+    west,
+    center,
+    northEast,
+    northWest,
+    southEast,
+    southWest,
+} from '@cloudinary/url-gen/qualifiers/compass';
+import { face, faces } from '@cloudinary/url-gen/qualifiers/focusOn';
+import { mode } from '@cloudinary/url-gen/actions/rotate';
+import { horizontalFlip } from '@cloudinary/url-gen/qualifiers/rotationMode';
 import { HtmlImageLayer, responsive, lazyload } from '@cloudinary/html';
 import { lenis } from './animations';
 
@@ -19,19 +34,77 @@ const cloudinary = new Cloudinary({
     },
 });
 
+// Focus areas supported for Cloudinary gravity
+export type FocusArea =
+    | 'top'
+    | 'north'
+    | 'bottom'
+    | 'south'
+    | 'left'
+    | 'west'
+    | 'right'
+    | 'east'
+    | 'center'
+    | 'north-east'
+    | 'north-west'
+    | 'south-east'
+    | 'south-west'
+    | 'face'
+    | 'faces'
+    | 'auto';
+
+// Helper to resolve Cloudinary gravityQualifier based on focus configuration
+function getGravityQualifier(focus?: FocusArea) {
+    switch (focus) {
+        case 'top':
+        case 'north':
+            return compass(north());
+        case 'bottom':
+        case 'south':
+            return compass(south());
+        case 'left':
+        case 'west':
+            return compass(west());
+        case 'right':
+        case 'east':
+            return compass(east());
+        case 'north-east':
+            return compass(northEast());
+        case 'north-west':
+            return compass(northWest());
+        case 'south-east':
+            return compass(southEast());
+        case 'south-west':
+            return compass(southWest());
+        case 'face':
+            return focusOn(face());
+        case 'faces':
+            return focusOn(faces());
+        case 'auto':
+            return autoGravity();
+        case 'center':
+            return compass(center());
+        default:
+            return undefined;
+    }
+}
+
 // Gallery image data
 interface GalleryImage {
     publicId: string;
     alt: string;
+    focus?: FocusArea;
+    mirror?: boolean;
+    photographer?: string;
 }
 
 const galleryImages: GalleryImage[] = [
-    { publicId: 'sophia_axtmann', alt: 'Sängerin Sophia Axtmann' },
+    { publicId: 'HiHa26_Cico_050_nu4ud6', alt: 'Sängerin Lillemor Pauli', photographer: 'B. Satzinger' },
+    { publicId: 'HiHa26_Cico_006_jumzhx', alt: 'Bandleader Tobias Baumgartner', focus: 'face', photographer: 'B. Satzinger' },
+    { publicId: 'HiHa25_Cico_027_q0sh6g', alt: 'Sängerin Sophie Kolomitschuk', photographer: 'B. Satzinger', mirror: true },
+    { publicId: 'bassist', alt: 'Bassist Sebastian Gittermann' },
+    { publicId: 'HiHa25_Cico_021_sstqs1', alt: 'Saxophonist Simon Wessling', focus: 'face', photographer: 'B. Satzinger' },
     { publicId: 'saxes', alt: 'Saxophonsection' },
-    { publicId: 'tobi_solo', alt: 'Bandleader Tobias Baumgartner' },
-    { publicId: 'hinterhalt_buehne', alt: 'Auftritt im Hinterhalt' },
-    { publicId: 'bassist', alt: 'Bassist' },
-    { publicId: 'gruppenfoto_craiova', alt: 'Gruppenfoto' },
 ];
 
 export function initGallery() {
@@ -48,12 +121,17 @@ export function initGallery() {
         // Generate gallery items with responsive images
         galleryImages.forEach((image, index) => {
             // Generate full-size URL for lightbox (1920px width)
-            const fullUrl = cloudinary
+            const fullImage = cloudinary
                 .image(image.publicId)
                 .resize(scale().width(1920))
                 .delivery(format(autoFormat()))
-                .delivery(quality(autoQuality()))
-                .toURL();
+                .delivery(quality(autoQuality()));
+
+            if (image.mirror) {
+                fullImage.rotate(mode(horizontalFlip()));
+            }
+
+            const fullUrl = fullImage.toURL();
 
             const galleryItem = document.createElement('div');
             galleryItem.className = 'gallery__item';
@@ -65,6 +143,18 @@ export function initGallery() {
 
             // Use modern Cloudinary HTML SDK for responsive thumbnails
             const thumbnailImage = new CloudinaryImage(image.publicId, { cloudName: CLOUD_NAME });
+
+            // Apply Cloudinary gravity if focus is specified
+            const gravityQualifier = getGravityQualifier(image.focus);
+            if (gravityQualifier) {
+                thumbnailImage.resize(fill().aspectRatio('4:3').gravity(gravityQualifier));
+            }
+
+            // Apply mirror/horizontal flip if specified
+            if (image.mirror) {
+                thumbnailImage.rotate(mode(horizontalFlip()));
+            }
+
             new HtmlImageLayer(img, thumbnailImage, [
                 lazyload(),
                 responsive({ steps: 200 })
@@ -80,6 +170,15 @@ export function initGallery() {
             overlay.appendChild(icon);
             galleryItem.appendChild(img);
             galleryItem.appendChild(overlay);
+
+            // Display photographer attribution subtily in the bottom right corner if present
+            if (image.photographer) {
+                const photographerBadge = document.createElement('span');
+                photographerBadge.className = 'gallery__photographer';
+                photographerBadge.textContent = `Foto: ${image.photographer}`;
+                galleryItem.appendChild(photographerBadge);
+            }
+
             galleryGrid.appendChild(galleryItem);
         });
 
@@ -106,14 +205,18 @@ function initLightbox() {
     // Preload all gallery images at 1920px for smooth navigation
     function preloadGalleryImages(): void {
         galleryImages.forEach((image) => {
-            const fullUrl = cloudinary
+            const fullImage = cloudinary
                 .image(image.publicId)
                 .resize(scale().width(1920))
                 .delivery(format(autoFormat()))
-                .delivery(quality(autoQuality()))
-                .toURL();
+                .delivery(quality(autoQuality()));
+
+            if (image.mirror) {
+                fullImage.rotate(mode(horizontalFlip()));
+            }
+
             const img = new Image();
-            img.src = fullUrl;
+            img.src = fullImage.toURL();
         });
     }
 
